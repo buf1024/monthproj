@@ -1,0 +1,41 @@
+{
+  "name": "livelog",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "release": "cd android; ./gradlew assembleRelease; cp app/build/outputs/apk/release/app-release.apk ../release",
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "test": "jest"
+  },
+  "dependencies": {
+    "lodash": "^4.17.11",
+    "moment": "^2.24.0",
+    "prop-types": "^15.7.2",
+    "react": "16.6.3",
+    "react-native": "0.58.4",
+    "react-native-calendars": "^1.22.0",
+    "react-native-gesture-handler": "^1.0.15",
+    "react-native-image-picker": "^0.28.0",
+    "react-native-popover-view": "^1.0.18",
+    "react-native-splash-screen": "^3.2.0",
+    "react-native-swiper": "^1.5.14",
+    "react-native-vector-icons": "^6.3.0",
+    "react-navigation": "^3.2.1",
+    "react-redux": "^6.0.0",
+    "realm": "^2.24.0",
+    "redux": "^4.0.1",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "24.1.0",
+    "jest": "24.1.0",
+    "metro-react-native-babel-preset": "0.51.1",
+    "react-test-renderer": "16.6.3"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}
