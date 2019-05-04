@@ -23,7 +23,6 @@ react native开始开发是很快的，但总是会遇到各种各样的小问�
 <tr>
 <td><img src="https://raw.githubusercontent.com/buf1024/monthproj/master/thediary/ui/thediary4.png" /></td>
 <td><img src="https://raw.githubusercontent.com/buf1024/monthproj/master/thediary/ui/thediary5.png" /></td>
-<td><img src="https://raw.githubusercontent.com/buf1024/monthproj/master/thediary/ui/thediary6.png" /></td>
 </tr>
 </table>
 
