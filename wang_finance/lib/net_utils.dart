@@ -71,7 +71,7 @@ class NetUtils {
   static Map<String, String> getCommonHeader() {
     Map<String, String> header = new Map();
     header['User-Agent'] = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36';
-    header['Host'] = 'appserv.egoldvip.com:16888';
+    header['Host'] = '127.0.0.1:16888';
     return header;
   }
 }
