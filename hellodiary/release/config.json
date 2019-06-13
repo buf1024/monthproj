@@ -1,12 +1,12 @@
 {
   "version": {
-    "version": "1.0.0",
-    "changeLog": "1. 初始发布\\n",
-    "releaseUrl": "https://github.com/buf1024/monthproj/raw/master/wang_finance/release/wang_finance.apk"
+    "version": "1.0.1",
+    "changeLog": "1. 测试更新\\n",
+    "releaseUrl": "https://github.com/buf1024/monthproj/raw/master/hellodiary/release/hellodiary1.0.1.apk"
   },
   "ad": {
-    "displayTime": 3,
-    "tapUrl": "",
-    "mediaUrl": ""
+    "displayTime": 15,
+    "tapUrl": "https://luoguochun.cn",
+    "mediaUrl": "https://raw.githubusercontent.com/buf1024/monthproj/master/hellodiary/assets/images/avatar.png"
   }
 }

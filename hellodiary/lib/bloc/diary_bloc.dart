@@ -49,7 +49,7 @@ class DiaryBloc implements BlocBase {
 
   bool showPicker = false;
 
-  Version version = Version("1.4.5", '1. 测试\n2.试试', 'https://github.com/buf1024/monthproj/raw/master/wang_finance/release/wang_finance.apk');
+  Version version;
   Advertisement advertisement;
 
   DiaryBloc() {
