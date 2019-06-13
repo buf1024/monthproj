@@ -1,0 +1,12 @@
+{
+  "version": {
+    "version": "1.0.0",
+    "changeLog": "1. 初始发布\\n",
+    "releaseUrl": "https://github.com/buf1024/monthproj/raw/master/wang_finance/release/wang_finance.apk"
+  },
+  "ad": {
+    "displayTime": 3,
+    "tapUrl": "",
+    "mediaUrl": ""
+  }
+}
