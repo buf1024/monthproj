@@ -56,9 +56,12 @@ class SharePref {
     if(_sharedPreferences == null) {
       return false;
     }
-    debugPrint('get bool key=$key');
     try {
-      return _sharedPreferences.getBool(key);
+      bool b = _sharedPreferences.getBool(key);
+      if(b == null) {
+        return false;
+      }
+      return b;
     } catch(e) {
       debugPrint('get bool: $e');
       return false;

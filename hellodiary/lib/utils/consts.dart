@@ -31,4 +31,4 @@ Map<String, IconData> iconMap = {
   'blur_on': Icons.blur_on,
 };
 
-String versionNumber = "0.0.1";
+String versionNumber = "1.0.1";
