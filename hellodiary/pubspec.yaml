@@ -60,6 +60,7 @@ flutter:
   assets:
     - assets/images/avatar.png
     - assets/images/splash.png
+    - assets/images/background.png
     - assets/images/1.png
     - assets/images/2.png
     - assets/images/3.png

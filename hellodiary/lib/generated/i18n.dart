@@ -41,15 +41,17 @@ class S implements WidgetsLocalizations {
   String get password => "Password";
   String get protect => "Protect";
   String get reenterPass => "Please reenter password";
-  String get save => "保存";
-  String get saved => "已保存";
+  String get save => "Save";
+  String get saved => "Saved";
   String get setting => "Settings";
   String get theme => "Theme";
-  String get title => "标题";
+  String get title => "Title";
+  String get useIt => "TRY IT!";
   String get version => "Version";
   String get wordCount => "Word(s)";
   String diaryCount(String post) => "$post Post(s)";
   String newestVersion(String version) => "Current ($version)";
+  String skipTime(String skipTime) => "$skipTime second(s) skip";
 }
 
 class zh_TW extends S {
@@ -71,7 +73,7 @@ class zh_TW extends S {
   @override
   String get language => "語言";
   @override
-  String get title => "标题";
+  String get title => "標題";
   @override
   String get setting => "設置";
   @override
@@ -105,6 +107,8 @@ class zh_TW extends S {
   @override
   String get diary => "日記";
   @override
+  String get useIt => "立刻體驗";
+  @override
   String get background => "背景";
   @override
   String get addDiary => "添加日記";
@@ -112,6 +116,8 @@ class zh_TW extends S {
   String get mismatchPass => "兩次輸入密碼不一致，請重新設置";
   @override
   String get incorrectPass => "密碼不正確";
+  @override
+  String skipTime(String skipTime) => "$skipTime 秒跳過";
   @override
   String newestVersion(String version) => "當前版本 ($version)";
   @override
@@ -175,6 +181,8 @@ class zh_CN extends S {
   @override
   String get diary => "日记";
   @override
+  String get useIt => "立即体验";
+  @override
   String get background => "背景";
   @override
   String get addDiary => "添加日记";
@@ -182,6 +190,8 @@ class zh_CN extends S {
   String get mismatchPass => "两次输入密码不一致，请重新设置";
   @override
   String get incorrectPass => "密码不正确";
+  @override
+  String skipTime(String skipTime) => "$skipTime 秒跳过";
   @override
   String newestVersion(String version) => "当前版本 ($version)";
   @override

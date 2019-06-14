@@ -531,7 +531,7 @@ class _HomePage extends State<HomePage> {
                         child: CircleAvatar(
                           backgroundColor: Colors.grey,
                           backgroundImage: (user == null || user.image.isEmpty)
-                              ? null
+                              ? AssetImage('assets/images/avatar.png')
                               : FileImage(File(user.image)),
                         ),
                       ),
@@ -766,7 +766,11 @@ class _HomePage extends State<HomePage> {
       builder: (BuildContext context, AsyncSnapshot<TabIndex> snapshot) {
         return Container(
           decoration: BoxDecoration(
-              image: (setting == null || setting.background.isEmpty) ? null : DecorationImage(
+              image: (setting == null || setting.background.isEmpty) ?
+              DecorationImage(
+                  image: AssetImage('assets/images/background.png'),
+                  fit: BoxFit.fill) :
+              DecorationImage(
                   image: FileImage(File(setting.background)),
                   fit: BoxFit.fill)),
           height: MediaQuery.of(context).size.height - kToolbarHeight,

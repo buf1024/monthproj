@@ -27,5 +27,7 @@
   "mismatchPass": "两次输入密码不一致，请重新设置",
   "save": "保存",
   "saved": "已保存",
-  "title": "标题"
+  "title": "标题",
+  "useIt": "立即体验",
+  "skipTime": "$skipTime 秒跳过"
 }

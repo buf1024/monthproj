@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 class SharePref {
   static SharePref _instance;
@@ -55,16 +56,19 @@ class SharePref {
     if(_sharedPreferences == null) {
       return false;
     }
+    debugPrint('get bool key=$key');
     try {
       return _sharedPreferences.getBool(key);
     } catch(e) {
+      debugPrint('get bool: $e');
       return false;
     }
   }
-  Future<bool> setBool(String key, bool value) {
+  Future<bool> putBool(String key, bool value) {
     if(_sharedPreferences == null) {
       return null;
     }
+    debugPrint('put bool key=$key, value: $value');
     return _sharedPreferences.setBool(key, value);
   }
 }

@@ -12,6 +12,7 @@ class Consts {
   static const String SP_LOCALE_COUNTRY = 'COUNTRY';
 
   static const String SP_SHOW_GUIDE = 'SP_SHOW_GUIDE';
+  static const String SP_SHOW_AD = 'SP_SHOW_AD';
   static const String SP_REMOTE_CONFIG = 'SP_REMOTE_CONFIG';
 
   static const String REMOTE_CONFIG_URL = 'https://raw.githubusercontent.com/buf1024/monthproj/master/hellodiary/release/config.json';

@@ -214,7 +214,7 @@ class _SettingPage extends State<SettingPage> {
                   width: 36.0,
                   height: 36.0,
                   child: (setting == null || setting.background.isEmpty)
-                      ? null
+                      ? Image.asset('assets/images/background', fit: BoxFit.fill,)
                       : Image.file(File(setting.background), fit: BoxFit.fill,),
                 ),
               ),

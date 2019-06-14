@@ -1,5 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.toyent.hellodiary">
+    package="com.toyent.hellodiary"
+          android:versionCode="1"
+          android:versionName="1.0.1"
+>
 
     <!-- io.flutter.app.FlutterApplication is an android.app.Application that
          calls FlutterMain.startInitialization(this); in its onCreate method.
@@ -10,7 +13,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="hellodiary"
+        android:label="老王日记"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:rxdart/rxdart.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:hellodiary/pages/home_page.dart';
 import 'package:hellodiary/utils/share_pref.dart';
@@ -9,6 +10,8 @@ import 'package:hellodiary/utils/consts.dart';
 import 'package:http/http.dart' as http;
 import 'package:hellodiary/utils/vo.dart';
 import 'package:hellodiary/bloc/index.dart';
+import 'package:hellodiary/generated/i18n.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SplashPage extends StatefulWidget {
   @override
@@ -39,14 +42,29 @@ class _SplashPageState extends State<SplashPage> {
     // TODO: implement initState
     super.initState();
 
-    bool showGuide = SharePref.instance().getBool(Consts.SP_SHOW_GUIDE);
-    if (!showGuide) {
-      setState(() {
-        _splashStep = _SplashStep.ShowGuide;
-      });
-    }
-    _initGuides();
-    _initAd();
+    // 需要延长才能获取到值，不解
+    Observable.just(1).delay(new Duration(milliseconds: 500)).listen((_) {
+      bool showGuide = SharePref.instance().getBool(Consts.SP_SHOW_GUIDE);
+      debugPrint('showGuide: $showGuide');
+      if (!showGuide) {
+        setState(() {
+          _splashStep = _SplashStep.ShowGuide;
+        });
+      }
+      Map map = SharePref.instance().getJson(Consts.SP_SHOW_AD);
+      if (map != null) {
+        DiaryBloc bloc = BlocProvider.of(context);
+
+        Version version = Version.fromMap(map["version"]);
+        Advertisement advertisement = Advertisement.fromMap(map["ad"]);
+
+        bloc.version = version;
+        bloc.advertisement = advertisement;
+
+        _advertisement = advertisement;
+      }
+      _initAd(showGuide);
+    });
   }
 
   @override
@@ -72,7 +90,7 @@ class _SplashPageState extends State<SplashPage> {
       setState(() {
         _timerTick = timer.tick;
       });
-      if (timer.tick > _advertisement.displayTime) {
+      if (timer.tick >= _advertisement.displayTime) {
         _timer.cancel();
         _timer = null;
 
@@ -81,26 +99,35 @@ class _SplashPageState extends State<SplashPage> {
     });
   }
 
-  void _initAd() {
+  void _initAd(bool showGuide) {
     Future<http.Response> resp = http.get(Consts.REMOTE_CONFIG_URL);
     resp.then((http.Response r) {
       var map = json.decode(r.body) as Map<String, dynamic>;
       Version version = Version.fromMap(map["version"]);
       Advertisement advertisement = Advertisement.fromMap(map["ad"]);
 
+      debugPrint('remote: $map');
       DiaryBloc bloc = BlocProvider.of(context);
       bloc.version = version;
       bloc.advertisement = advertisement;
-
-      setState(() {
-        _splashStep = _SplashStep.ShowAD;
-        _advertisement = advertisement;
-
-        _startTimer();
-      });
+      _advertisement = advertisement;
+      if (showGuide) {
+        setState(() {
+          _splashStep = _SplashStep.ShowAD;
+          _startTimer();
+        });
+      }
+      SharePref.instance().putJson(Consts.SP_SHOW_AD, map);
     }).catchError((e) {
       debugPrint('_initAd catchError: $e');
-      _goHome();
+      if (_advertisement != null) {
+        setState(() {
+          _splashStep = _SplashStep.ShowAD;
+          _startTimer();
+        });
+      } else {
+        _goHome();
+      }
     });
   }
 
@@ -120,7 +147,8 @@ class _SplashPageState extends State<SplashPage> {
               child: Container(
                 margin: EdgeInsets.only(bottom: 50.0),
                 child: InkWell(
-                  onTap: () {
+                  onTap: () async {
+                    await SharePref.instance().putBool(Consts.SP_SHOW_GUIDE, true);
                     _goHome();
                   },
                   child: Container(
@@ -130,7 +158,7 @@ class _SplashPageState extends State<SplashPage> {
                         color: Colors.blueAccent,
                         borderRadius: BorderRadius.all(Radius.circular(10.0))),
                     child: Text(
-                      '立即体验',
+                      S.of(context).useIt,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.white,
@@ -164,6 +192,9 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   Widget _buildGuide() {
+    if (_guideWidgets == null || _guideWidgets.length == 0) {
+      _initGuides();
+    }
     return Swiper(
       itemBuilder: (BuildContext context, int index) {
         return _guideWidgets[index];
@@ -176,6 +207,7 @@ class _SplashPageState extends State<SplashPage> {
       onTap: (int index) {
         debugPrint('onTap');
       },
+      loop: false,
     );
   }
 
@@ -186,8 +218,11 @@ class _SplashPageState extends State<SplashPage> {
     return Stack(
       children: <Widget>[
         InkWell(
-          onTap: () {
+          onTap: () async {
             debugPrint('ad press');
+            if (await canLaunch(_advertisement.tapUrl)) {
+              await launch(_advertisement.tapUrl);
+            }
           },
           child: Container(
             alignment: Alignment.center,
@@ -209,8 +244,8 @@ class _SplashPageState extends State<SplashPage> {
                     height: double.infinity,
                   );
                 },
-                imageUrl:
-                    'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1558007762621&di=2026f937c50755b77ef7c938bda5596d&imgtype=0&src=http%3A%2F%2Fpic2.52pk.com%2Ffiles%2Fallimg%2F090626%2F1553504U2-2.jpg'),
+                imageUrl: _advertisement.mediaUrl),
+//                  imageUrl: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1560491754902&di=7d7fb4ed7ff01bc9f04d3b8e441dea8c&imgtype=jpg&src=http%3A%2F%2Fimg0.imgtn.bdimg.com%2Fit%2Fu%3D1065560185%2C642634366%26fm%3D214%26gp%3D0.jpg'),
           ),
         ),
         Align(
@@ -222,9 +257,10 @@ class _SplashPageState extends State<SplashPage> {
                 debugPrint('skip ontap');
               },
               child: Container(
-                padding: EdgeInsets.all(3),
+                margin: EdgeInsets.only(top: 20.0),
+                padding: EdgeInsets.only(top: 3, bottom: 3, left: 8, right: 8),
                 child: Text(
-                  '${_advertisement.displayTime - _timerTick}秒跳过',
+                  S.of(context).skipTime('${_advertisement.displayTime - _timerTick}'),
                   textAlign: TextAlign.center,
                 ),
                 decoration: BoxDecoration(

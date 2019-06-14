@@ -22,7 +22,7 @@ class Advertisement {
   Advertisement(this.displayTime, this.tapUrl, this.mediaUrl);
 
   Advertisement.fromMap(Map<String, dynamic> map)
-      : this(map['displayTime'], map['tapUrl'],map['tapUrl']);
+      : this(map['displayTime'], map['tapUrl'],map['mediaUrl']);
 
   @override
   String toString() {
