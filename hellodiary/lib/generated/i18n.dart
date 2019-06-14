@@ -54,6 +54,7 @@ class S implements WidgetsLocalizations {
   String get useIt => "TRY IT!";
   String get version => "Version";
   String get wordCount => "Word(s)";
+  String currentVersion(String version) => "Current version $version";
   String diaryCount(String post) => "$post Post(s)";
   String newVersion(String version) => "New version $version found";
   String newestVersion(String version) => "Current ($version) is the newest version";
@@ -136,6 +137,8 @@ class zh_TW extends S {
   String skipTime(String skipTime) => "$skipTime 秒跳過";
   @override
   String newestVersion(String version) => "當前版本 ($version) 已經是最新版本";
+  @override
+  String currentVersion(String version) => "當前版本 $version";
   @override
   String diaryCount(String post) => "$post 篇";
   @override
@@ -222,6 +225,8 @@ class zh_CN extends S {
   String skipTime(String skipTime) => "$skipTime 秒跳过";
   @override
   String newestVersion(String version) => "当前版本 ($version) 已经是最新版本";
+  @override
+  String currentVersion(String version) => "当前版本 $version";
   @override
   String diaryCount(String post) => "$post 篇";
   @override

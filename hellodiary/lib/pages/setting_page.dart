@@ -30,7 +30,7 @@ class _SettingPage extends State<SettingPage> {
 
     PackageInfo.fromPlatform().then((PackageInfo packageInfo) {
       setState(() {
-//        _versionNumber = packageInfo.version;
+        _versionNumber = packageInfo.version;
       });
     });
   }
@@ -362,7 +362,7 @@ class _SettingPage extends State<SettingPage> {
                   children: <Widget>[
                     Text(S.of(context).version),
                     Text(
-                      S.of(context).newestVersion(_versionNumber),
+                      S.of(context).currentVersion(_versionNumber),
                       style: TextStyle(fontSize: 12.0, color: Colors.grey),
                     )
                   ],

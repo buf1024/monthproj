@@ -31,6 +31,7 @@
   "useIt": "TRY IT!",
   "skipTime": "$skipTime second(s) skip",
   "newVersion": "New version $version found",
+  "currentVersion": "Current version $version",
   "chgLog": "Change log：",
   "update": "Update",
   "openUrlFailed": "Fail to open URL",
