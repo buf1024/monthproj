@@ -30,7 +30,7 @@ class _SettingPage extends State<SettingPage> {
 
     PackageInfo.fromPlatform().then((PackageInfo packageInfo) {
       setState(() {
-        _versionNumber = packageInfo.version;
+//        _versionNumber = packageInfo.version;
       });
     });
   }
@@ -305,7 +305,6 @@ class _SettingPage extends State<SettingPage> {
                             content: SingleChildScrollView(
                               child: ListBody(
                                 children: (chgs) {
-                                  debugPrint('chngs: $chgs');
                                   List<Widget> widgets = List<Widget>();
                                   widgets.add(Text(S.of(context).chgLog));
                                   widgets.add(Text(''));
@@ -320,6 +319,7 @@ class _SettingPage extends State<SettingPage> {
                               FlatButton(
                                 child: Text(S.of(context).update),
                                 onPressed: () async {
+                                  debugPrint('onupdate press: ${ver}');
                                   if(await canLaunch(ver.releaseURL)) {
                                     await launch(ver.releaseURL);
                                     Navigator.of(context).pop();

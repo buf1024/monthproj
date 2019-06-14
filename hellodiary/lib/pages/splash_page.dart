@@ -106,7 +106,7 @@ class _SplashPageState extends State<SplashPage> {
       Version version = Version.fromMap(map["version"]);
       Advertisement advertisement = Advertisement.fromMap(map["ad"]);
 
-      debugPrint('remote: $map');
+      debugPrint('remote: $map, version: $version');
       DiaryBloc bloc = BlocProvider.of(context);
       bloc.version = version;
       bloc.advertisement = advertisement;

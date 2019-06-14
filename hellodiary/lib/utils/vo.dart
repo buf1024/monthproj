@@ -6,7 +6,7 @@ class Version {
   Version(this.version, this.changeLog, this.releaseURL);
 
   Version.fromMap(Map<String, dynamic> map)
-      : this(map['version'], map['changeLog'],map['releaseURL']);
+      : this(map['version'], map['changeLog'], map['releaseUrl']);
 
   @override
   String toString() {
