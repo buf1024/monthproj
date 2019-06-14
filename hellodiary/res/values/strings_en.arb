@@ -20,7 +20,7 @@
   "protect": "Protect",
   "about": "About",
   "version": "Version",
-  "newestVersion": "Current ($version)",
+  "newestVersion": "Current ($version) is the newest version",
   "password": "Password",
   "incorrectPass": "Incorrect password",
   "reenterPass": "Please reenter password",

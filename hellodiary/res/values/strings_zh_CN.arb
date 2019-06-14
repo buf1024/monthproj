@@ -20,7 +20,7 @@
   "protect": "密码保护",
   "about": "关于",
   "version": "版本",
-  "newestVersion": "当前版本 ($version)",
+  "newestVersion": "当前版本 ($version) 已经是最新版本",
   "password": "密码",
   "incorrectPass": "密码不正确",
   "reenterPass": "请重新输入密码",
