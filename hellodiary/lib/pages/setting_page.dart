@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:package_info/package_info.dart';
 import 'package:hellodiary/generated/i18n.dart';
 import 'package:hellodiary/pages/password_page.dart';
 import 'package:hellodiary/bloc/index.dart';
@@ -21,10 +22,17 @@ class SettingPage extends StatefulWidget {
 
 class _SettingPage extends State<SettingPage> {
   Map<String, String> _languages = {'': '', 'CN': 'zh', 'TW': 'zh', 'US': 'en'};
+  String _versionNumber = "0.0.0";
 
   @override
   void initState() {
     super.initState();
+
+    PackageInfo.fromPlatform().then((PackageInfo packageInfo) {
+      setState(() {
+        _versionNumber = packageInfo.version;
+      });
+    });
   }
 
   String _getLanguageText(String key) {
@@ -214,7 +222,7 @@ class _SettingPage extends State<SettingPage> {
                   width: 36.0,
                   height: 36.0,
                   child: (setting == null || setting.background.isEmpty)
-                      ? Image.asset('assets/images/background', fit: BoxFit.fill,)
+                      ? Image.asset('assets/images/background.png', fit: BoxFit.fill,)
                       : Image.file(File(setting.background), fit: BoxFit.fill,),
                 ),
               ),
@@ -277,7 +285,7 @@ class _SettingPage extends State<SettingPage> {
                   Version ver = bloc.version;
                   if (ver != null) {
                     var verSvr = ver.version.split('.');
-                    var verLocal = versionNumber.split('.');
+                    var verLocal = _versionNumber.split('.');
                     var min = verSvr.length > verLocal.length ? verLocal.length : verSvr.length;
                     bool hasNew = false;
                     for(int i=0; i<min; i++) {
@@ -339,7 +347,7 @@ class _SettingPage extends State<SettingPage> {
                     } else {
                       SnackBar snackBar = SnackBar(
                           backgroundColor: Theme.of(context).primaryColor,
-                          content: Text('当前版本 $versionNumber 已经是最新版本!'));
+                          content: Text('当前版本 $_versionNumber 已经是最新版本!'));
                       Scaffold.of(context).showSnackBar(snackBar);
                     }
                   } else {
@@ -354,7 +362,7 @@ class _SettingPage extends State<SettingPage> {
                   children: <Widget>[
                     Text(S.of(context).version),
                     Text(
-                      S.of(context).newestVersion(versionNumber),
+                      S.of(context).newestVersion(_versionNumber),
                       style: TextStyle(fontSize: 12.0, color: Colors.grey),
                     )
                   ],

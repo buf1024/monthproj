@@ -112,6 +112,7 @@ class _MyApp extends State<MyApp> {
             final Locale languageLocale = new Locale(locale.languageCode, "");
             if (supported.contains(locale)) {
               _deviceLocale = locale;
+              Intl.defaultLocale = '${_deviceLocale.languageCode}_${_deviceLocale.countryCode}';
               return locale;
             } else if (supported.contains(languageLocale)) {
               return languageLocale;

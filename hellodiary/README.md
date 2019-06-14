@@ -37,8 +37,4 @@ packages/zefyr/lib/src/widgets/editable_text.dart
 <td><img src="https://raw.githubusercontent.com/buf1024/monthproj/master/hellodiary/assets/images/5.png" /></td>
 <td><img src="https://raw.githubusercontent.com/buf1024/monthproj/master/hellodiary/assets/images/6.png" /></td>
 </tr>
-<tr>
-<td><img src="https://raw.githubusercontent.com/buf1024/monthproj/master/hellodiary/assets/images/7.png" /></td>
-<td><img src="https://raw.githubusercontent.com/buf1024/monthproj/master/hellodiary/assets/images/8.png" /></td>
-</tr>
 </table>

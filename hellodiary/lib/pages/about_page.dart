@@ -102,7 +102,10 @@ class AboutPage extends StatelessWidget {
     if (locale == "en_US") {
       return _getNotes_en_US();
     }
-
+    if (locale == null) {
+      locale = '';
+    }
+    debugPrint('locale: $locale');
     var lang = locale.split("_");
     if(lang.length > 0) {
       var l = lang[0];
