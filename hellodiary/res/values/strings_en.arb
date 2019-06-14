@@ -29,5 +29,11 @@
   "saved": "Saved",
   "title": "Title",
   "useIt": "TRY IT!",
-  "skipTime": "$skipTime second(s) skip"
+  "skipTime": "$skipTime second(s) skip",
+  "newVersion": "New version $version found",
+  "chgLog": "Change log：",
+  "update": "Update",
+  "openUrlFailed": "Fail to open URL",
+  "cancel": "Cancel",
+  "tryLater": "Fail to obtain version info, pls try later!"
 }

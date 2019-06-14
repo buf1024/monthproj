@@ -1,8 +1,8 @@
 {
   "version": {
-    "version": "1.0.1",
-    "changeLog": "1. 测试更新\n",
-    "releaseUrl": "https://github.com/buf1024/monthproj/raw/master/hellodiary/release/hellodiary1.0.1.apk"
+    "version": "1.0.2",
+    "changeLog": "1. 补充完整翻译\n",
+    "releaseUrl": "https://github.com/buf1024/monthproj/raw/master/hellodiary/release/hellodiary.apk"
   },
   "ad": {
     "displayTime": 3,

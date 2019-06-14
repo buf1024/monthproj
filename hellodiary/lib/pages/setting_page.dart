@@ -301,13 +301,13 @@ class _SettingPage extends State<SettingPage> {
                         builder: (BuildContext context) {
                           var chg = ver.changeLog;
                           return AlertDialog(
-                            title: Text('发现新版本 ${ver.version}'),
+                            title: Text(S.of(context).newVersion(ver.version)),
                             content: SingleChildScrollView(
                               child: ListBody(
                                 children: (chgs) {
                                   debugPrint('chngs: $chgs');
                                   List<Widget> widgets = List<Widget>();
-                                  widgets.add(Text('更新日志：'));
+                                  widgets.add(Text(S.of(context).chgLog));
                                   widgets.add(Text(''));
                                   for(var c in chgs) {
                                     widgets.add(Text(c));
@@ -318,7 +318,7 @@ class _SettingPage extends State<SettingPage> {
                             ),
                             actions: <Widget>[
                               FlatButton(
-                                child: Text('更新'),
+                                child: Text(S.of(context).update),
                                 onPressed: () async {
                                   if(await canLaunch(ver.releaseURL)) {
                                     await launch(ver.releaseURL);
@@ -327,7 +327,7 @@ class _SettingPage extends State<SettingPage> {
                                     debugPrint('can not launch ${ver.releaseURL}');
                                     SnackBar snackBar = SnackBar(
                                         backgroundColor: Theme.of(context).primaryColor,
-                                        content: Text('无法打开链接地址'));
+                                        content: Text(S.of(context).openUrlFailed));
                                     Scaffold.of(context).showSnackBar(snackBar);
 
                                     Navigator.of(context).pop();
@@ -335,7 +335,7 @@ class _SettingPage extends State<SettingPage> {
                                 },
                               ),
                               FlatButton(
-                                child: Text('取消'),
+                                child: Text(S.of(context).cancel),
                                 onPressed: () {
                                   Navigator.of(context).pop();
                                 },
@@ -347,13 +347,13 @@ class _SettingPage extends State<SettingPage> {
                     } else {
                       SnackBar snackBar = SnackBar(
                           backgroundColor: Theme.of(context).primaryColor,
-                          content: Text('当前版本 $_versionNumber 已经是最新版本!'));
+                          content: Text(S.of(context).newestVersion(_versionNumber)));
                       Scaffold.of(context).showSnackBar(snackBar);
                     }
                   } else {
                     SnackBar snackBar = SnackBar(
                         backgroundColor: Theme.of(context).primaryColor,
-                        content: Text('无法获取版本信息，请稍后再试!'));
+                        content: Text(S.of(context).tryLater));
                     Scaffold.of(context).showSnackBar(snackBar);
                   }
                 },
@@ -400,10 +400,6 @@ class _SettingPage extends State<SettingPage> {
 //            ),
           ]);
         });
-  }
-
-  void _checkNew() {
-
   }
 
   @override

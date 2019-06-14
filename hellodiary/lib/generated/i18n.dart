@@ -26,7 +26,9 @@ class S implements WidgetsLocalizations {
   String get background => "Background";
   String get browser => "Entries";
   String get camera => "Camera";
+  String get cancel => "Cancel";
   String get cancelDelete => "Cancel";
+  String get chgLog => "Change log：";
   String get count => "Post(s)";
   String get deletedDiary => "Diary deleted";
   String get diary => "Diary";
@@ -38,6 +40,7 @@ class S implements WidgetsLocalizations {
   String get language => "Language";
   String get mine => "Mine";
   String get mismatchPass => "Password mismatch, please reset";
+  String get openUrlFailed => "Fail to open URL";
   String get password => "Password";
   String get protect => "Protect";
   String get reenterPass => "Please reenter password";
@@ -46,10 +49,13 @@ class S implements WidgetsLocalizations {
   String get setting => "Settings";
   String get theme => "Theme";
   String get title => "Title";
+  String get tryLater => "Fail to obtain version info, pls try later!";
+  String get update => "Update";
   String get useIt => "TRY IT!";
   String get version => "Version";
   String get wordCount => "Word(s)";
   String diaryCount(String post) => "$post Post(s)";
+  String newVersion(String version) => "New version $version found";
   String newestVersion(String version) => "Current ($version)";
   String skipTime(String skipTime) => "$skipTime second(s) skip";
 }
@@ -63,6 +69,8 @@ class zh_TW extends S {
   @override
   String get imageCount => "圖";
   @override
+  String get cancel => "取消";
+  @override
   String get saved => "已保存";
   @override
   String get followSysLang => "跟隨系統";
@@ -71,9 +79,13 @@ class zh_TW extends S {
   @override
   String get save => "保存";
   @override
+  String get update => "更新";
+  @override
   String get language => "語言";
   @override
   String get title => "標題";
+  @override
+  String get openUrlFailed => "無法打卡連接地址";
   @override
   String get setting => "設置";
   @override
@@ -84,6 +96,8 @@ class zh_TW extends S {
   String get theme => "主題";
   @override
   String get protect => "密碼保護";
+  @override
+  String get chgLog => "更新日誌：";
   @override
   String get camera => "照相";
   @override
@@ -109,6 +123,8 @@ class zh_TW extends S {
   @override
   String get useIt => "立刻體驗";
   @override
+  String get tryLater => "無法獲取版本信息，請稍後再試!";
+  @override
   String get background => "背景";
   @override
   String get addDiary => "添加日記";
@@ -122,6 +138,8 @@ class zh_TW extends S {
   String newestVersion(String version) => "當前版本 ($version)";
   @override
   String diaryCount(String post) => "$post 篇";
+  @override
+  String newVersion(String version) => "發現新版本 $version";
 }
 
 class en extends S {
@@ -137,6 +155,8 @@ class zh_CN extends S {
   @override
   String get imageCount => "图";
   @override
+  String get cancel => "取消";
+  @override
   String get saved => "已保存";
   @override
   String get followSysLang => "跟随系统";
@@ -145,9 +165,13 @@ class zh_CN extends S {
   @override
   String get save => "保存";
   @override
+  String get update => "更新";
+  @override
   String get language => "语言";
   @override
   String get title => "标题";
+  @override
+  String get openUrlFailed => "无法打开链接地址";
   @override
   String get setting => "设置";
   @override
@@ -158,6 +182,8 @@ class zh_CN extends S {
   String get theme => "主题";
   @override
   String get protect => "密码保护";
+  @override
+  String get chgLog => "更新日志：";
   @override
   String get camera => "照相";
   @override
@@ -183,6 +209,8 @@ class zh_CN extends S {
   @override
   String get useIt => "立即体验";
   @override
+  String get tryLater => "无法获取版本信息，请稍后再试!";
+  @override
   String get background => "背景";
   @override
   String get addDiary => "添加日记";
@@ -196,6 +224,8 @@ class zh_CN extends S {
   String newestVersion(String version) => "当前版本 ($version)";
   @override
   String diaryCount(String post) => "$post 篇";
+  @override
+  String newVersion(String version) => "发现新版本 $version";
 }
 
 

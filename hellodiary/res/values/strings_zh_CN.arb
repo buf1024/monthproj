@@ -29,5 +29,11 @@
   "saved": "已保存",
   "title": "标题",
   "useIt": "立即体验",
-  "skipTime": "$skipTime 秒跳过"
+  "skipTime": "$skipTime 秒跳过",
+  "newVersion": "发现新版本 $version",
+  "chgLog": "更新日志：",
+  "update": "更新",
+  "openUrlFailed": "无法打开链接地址",
+  "cancel": "取消",
+  "tryLater": "无法获取版本信息，请稍后再试!"
 }

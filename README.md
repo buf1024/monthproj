@@ -8,4 +8,4 @@
 
 - 简单财经资讯: [老王财讯](https://github.com/buf1024/monthproj/tree/master/wang_finance) -- flutter。[wang_finance.apk](https://github.com/buf1024/monthproj/raw/master/wang_finance/release/wang_finance.apk)
 
-- 模仿电影《你的名字。》日记应用: [hellodiary](https://github.com/buf1024/monthproj/tree/master/hellodiary) -- flutter。apk下载:[hellodiary.apk](https://github.com/buf1024/monthproj/raw/master/hellodiary/release/hellodiary1.0.1.apk)
+- 模仿电影《你的名字。》日记应用: [hellodiary](https://github.com/buf1024/monthproj/tree/master/hellodiary) -- flutter。apk下载:[hellodiary.apk](https://github.com/buf1024/monthproj/raw/master/hellodiary/release/hellodiary.apk)
