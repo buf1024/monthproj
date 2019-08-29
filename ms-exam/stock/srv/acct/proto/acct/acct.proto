@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package com.toyent.srv.acct;
+
+service Acct {
+	rpc Open(OpenRequest) returns (OpenResponse) {}
+	rpc Query(QueryRequest) returns (QueryResponse) {}
+	rpc Change(ChangeRequest) returns (ChangeResponse) {}
+}
+
+message OpenRequest {
+	string sid = 1;
+	string user_id = 2;
+}
+
+message OpenResponse {
+	string sid = 1;
+	string status = 2;
+	string message = 3;
+	int64 account_id = 4;
+	double balance = 5;
+}
+
+message QueryRequest {
+	string sid = 1;
+	string user_id = 2;
+}
+
+message QueryResponse {
+	string sid = 1;
+	string status = 2;
+	string message = 3;
+	double balance = 5;
+}
+
+message ChangeRequest {
+	string sid = 1;
+	string user_id = 2;
+	double amount = 3;
+}
+
+message ChangeResponse {
+	string sid = 1;
+	string status = 2;
+	string message = 3;
+	double balance = 4;
+}

@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package com.toyent.srv.user;
+
+service User {
+	rpc Open(OpenRequest) returns (OpenResponse) {}
+	rpc Query(QueryRequest) returns (QueryResponse) {}
+	rpc Auth(AuthRequest) returns (AuthResponse) {}
+}
+
+message OpenRequest {
+	string sid = 1;
+	string user_id = 2;
+	string user_name = 3;
+	string password = 4;
+}
+
+message OpenResponse {
+	string sid = 1;
+	string status = 2;
+	string message = 3;
+}
+
+message QueryRequest {
+	string sid = 1;
+	string user_id = 2;
+}
+
+message QueryResponse {
+	string sid = 1;
+	string status = 2;
+	string message = 3;
+	string user_id = 4;
+	string user_name = 5;
+}
+
+message AuthRequest {
+	string sid = 1;
+	string user_id = 2;
+	string password = 3;
+}
+
+message AuthResponse {
+	string sid = 1;
+	string status = 2;
+	string message = 3;
+}
