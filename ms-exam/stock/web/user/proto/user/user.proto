@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package com.toyent.web.user;
+
+message RegRequest {
+	string sid = 1;
+	string user_id = 2;
+	string user_name = 3;
+	string password = 4;
+}
+
+message RegResponse {
+	string sid = 1;
+	string status = 2;
+	string message = 3;
+	double balance = 4;
+}
+
+message LoginRequest {
+	string sid = 1;
+	string user_id = 2;
+	string password = 3;
+}
+
+message LoginResponse {
+	string sid = 1;
+	string status = 2;
+	string message = 3;
+}
+
+message QueryRequest {
+	string sid = 1;
+	string user_id = 2;
+}
+
+message QueryResponse {
+	string sid = 1;
+	string status = 2;
+	string message = 3;
+	string user_id = 4;
+	string user_name = 5;
+	double balance = 6;
+}

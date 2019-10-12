@@ -1,0 +1,84 @@
+syntax = "proto3";
+
+package com.toyent.srv.order;
+
+service Order {
+	rpc QueryOrder(QueryOrderRequest) returns (QueryOrderResponse) {}
+	rpc Order(OrderRequest) returns (OrderResponse) {}
+	rpc QueryHold(QueryHoldRequest) returns (QueryHoldResponse) {}
+	rpc Cancel(CancelRequest) returns (CancelResponse) {}
+}
+
+message HoldOrder {
+	string stock_id = 1;
+	int32 hold_number = 2;
+	double hold_price = 3;
+}
+
+message UserOrder {
+	int64 order_id = 1;
+	string stock_id = 2;
+	int32 order_type = 3;
+	int32 order_number = 4;
+	int32 deal_number = 5;
+	double order_price = 6;
+	int32 order_status = 7;
+}
+
+message QueryOrderRequest {
+	string sid = 1;
+	string user_id = 2;
+	int64 order_id = 3;
+	string stock_id = 4;
+}
+
+message QueryOrderResponse {
+	string sid = 1;
+	string status = 2;
+	string message = 3;
+	repeated UserOrder order = 4;
+}
+
+message OrderRequest {
+	string sid = 1;
+	string user_id = 2;
+	string stock_id = 3;
+	int32 order_type = 4;
+    int32 order_number = 5;
+    double order_price = 6;
+}
+
+message OrderResponse {
+	string sid = 1;
+	string status = 2;
+	string message = 3;
+	int64 order_id = 4;
+}
+
+message QueryHoldRequest {
+	string sid = 1;
+	string user_id = 2;
+	string stock_id = 3;
+}
+
+message QueryHoldResponse {
+	string sid = 1;
+	string status = 2;
+	string message = 3;
+	repeated HoldOrder hold_order = 4;
+}
+
+message CancelRequest {
+	string sid = 1;
+	string user_id = 2;
+	int64 order_id = 3;
+}
+
+message CancelResponse {
+	string sid = 1;
+	string status = 2;
+	string message = 3;
+	int32 order_status = 4;
+	int32 deal_number = 5;
+	int32 undeal_number = 6;
+}

@@ -1,0 +1,144 @@
+version: '3'
+services:
+  consul:
+    container_name: ms-consul
+    command: agent --server=true --bootstrap-expect=1 --client=0.0.0.0 -ui --node ms-consul
+    image: consul:latest
+    volumes:
+      - /Users/luoguochun/privt/docker-data/localtime:/etc/localtime:ro
+    ports:
+      - "8300:8300"
+      - "8400:8400"
+      - "8500:8500"
+      - "8600:53/udp"
+    networks:
+      - stock-network
+
+  mysql:
+    container_name: ms-mysql
+    image: mysql:latest
+    volumes:
+      - /Users/luoguochun/privt/docker-data/localtime:/etc/localtime:ro
+      - /Users/luoguochun/privt/docker-data/mysql/datadir/:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=111111
+    ports:
+      - "3306:3306"
+    networks:
+      - stock-network
+
+  redis:
+    container_name: ms-redis
+    image: redis:latest
+    volumes:
+      - /Users/luoguochun/privt/docker-data/localtime:/etc/localtime:ro
+      - /Users/luoguochun/privt/docker-data/redis/datadir/:/data
+    ports:
+      - "6379:6379"
+    networks:
+      - stock-network
+
+  stock-gate:
+    container_name: ms-stock-gate
+    command: --registry=consul --registry_address=consul:8500 --config_address=consul:8500 api --handler=web --namespace=com.toyent.web
+    image: stock-gate:latest
+    depends_on:
+      - consul
+      - redis
+      - mysql
+    ports:
+      - "8080:8080"
+    networks:
+      - stock-network
+
+  acct-srv:
+    container_name: ms-acct-srv
+    command: --registry=consul --registry_address=consul:8500 --config_address=consul:8500
+    image: acct-srv:latest
+    depends_on:
+      - consul
+      - redis
+      - mysql
+    networks:
+      - stock-network
+
+  order-srv:
+    container_name: ms-order-srv
+    command: --registry=consul --registry_address=consul:8500 --config_address=consul:8500
+    image: order-srv:latest
+    depends_on:
+      - consul
+      - redis
+      - mysql
+    networks:
+      - stock-network
+
+  order-deal-srv:
+    container_name: ms-order-deal-srv
+    command: --registry=consul --registry_address=consul:8500 --config_address=consul:8500
+    image: order-deal-srv:latest
+    depends_on:
+      - consul
+      - redis
+      - mysql
+    networks:
+      - stock-network
+
+  stock-srv:
+    container_name: ms-stock-srv
+    command: --registry=consul --registry_address=consul:8500 --config_address=consul:8500
+    image: stock-srv:latest
+    depends_on:
+      - consul
+      - redis
+      - mysql
+    networks:
+      - stock-network
+
+  user-srv:
+    container_name: ms-user-srv
+    command: --registry=consul --registry_address=consul:8500 --config_address=consul:8500
+    image: user-srv:latest
+    depends_on:
+      - consul
+      - redis
+      - mysql
+    networks:
+      - stock-network
+
+  stock-web:
+    container_name: ms-stock-web
+    command: --registry=consul --registry_address=consul:8500 --config_address=consul:8500
+    image: stock-web:latest
+    depends_on:
+      - consul
+      - redis
+      - mysql
+    networks:
+      - stock-network
+
+  order-web:
+    container_name: ms-order-web
+    command: --registry=consul --registry_address=consul:8500 --config_address=consul:8500
+    image: order-web:latest
+    depends_on:
+      - consul
+      - redis
+      - mysql
+    networks:
+      - stock-network
+
+  user-web:
+    container_name: ms-user-web
+    command: --registry=consul --registry_address=consul:8500 --config_address=consul:8500
+    image: user-web:latest
+    depends_on:
+      - consul
+      - redis
+      - mysql
+    networks:
+      - stock-network
+
+networks:
+  stock-network:
+    driver: bridge
