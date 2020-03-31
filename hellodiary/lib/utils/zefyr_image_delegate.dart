@@ -31,4 +31,12 @@ class MyAppZefyrImageDelegate implements ZefyrImageDelegate<ImageSource> {
     bloc.showPicker = false;
     return file.path;
   }
+
+  @override
+  // TODO: implement cameraSource
+  ImageSource get cameraSource => ImageSource.camera;
+
+  @override
+  // TODO: implement gallerySource
+  ImageSource get gallerySource => ImageSource.gallery;
 }

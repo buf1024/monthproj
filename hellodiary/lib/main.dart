@@ -49,7 +49,7 @@ class _MyApp extends State<MyApp> {
         debugPrint('switchLocale: $map');
         var lang = map[Consts.SP_LOCALE_LANGUAGE];
         var country = map[Consts.SP_LOCALE_COUNTRY];
-        debugPrint('${lang}_${country}');
+        debugPrint('$lang}_${country}');
         if(lang.isEmpty || country.isEmpty) {
           _locale = null;
           if (_deviceLocale != null) {

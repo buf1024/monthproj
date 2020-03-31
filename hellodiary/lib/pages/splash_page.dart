@@ -43,7 +43,7 @@ class _SplashPageState extends State<SplashPage> {
     super.initState();
 
     // 需要延长才能获取到值，不解
-    Observable.just(1).delay(new Duration(milliseconds: 500)).listen((_) {
+    Stream.value(1).delay(new Duration(milliseconds: 500)).listen((_) {
       bool showGuide = SharePref.instance().getBool(Consts.SP_SHOW_GUIDE);
       debugPrint('showGuide: $showGuide');
       if (!showGuide) {
@@ -78,10 +78,10 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   void _goHome() {
-    Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (BuildContext context) {
-          return HomePage();
-        }));
+    Navigator.of(context)
+        .pushReplacement(MaterialPageRoute(builder: (BuildContext context) {
+      return HomePage();
+    }));
   }
 
   void _startTimer() {
@@ -148,7 +148,8 @@ class _SplashPageState extends State<SplashPage> {
                 margin: EdgeInsets.only(bottom: 50.0),
                 child: InkWell(
                   onTap: () async {
-                    await SharePref.instance().putBool(Consts.SP_SHOW_GUIDE, true);
+                    await SharePref.instance()
+                        .putBool(Consts.SP_SHOW_GUIDE, true);
                     _goHome();
                   },
                   child: Container(
@@ -245,7 +246,6 @@ class _SplashPageState extends State<SplashPage> {
                   );
                 },
                 imageUrl: _advertisement.mediaUrl),
-//                  imageUrl: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1560491754902&di=7d7fb4ed7ff01bc9f04d3b8e441dea8c&imgtype=jpg&src=http%3A%2F%2Fimg0.imgtn.bdimg.com%2Fit%2Fu%3D1065560185%2C642634366%26fm%3D214%26gp%3D0.jpg'),
           ),
         ),
         Align(

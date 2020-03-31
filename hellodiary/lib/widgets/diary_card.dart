@@ -141,8 +141,8 @@ class _DiaryCard extends State<DiaryCard> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Container(
-              padding:
-              EdgeInsets.only(left: 12.0, right: 12.0, top: 4.0, bottom: 4.0),
+              padding: EdgeInsets.only(
+                  left: 12.0, right: 12.0, top: 4.0, bottom: 4.0),
               child: Column(
                 children: <Widget>[
                   Container(
@@ -150,14 +150,15 @@ class _DiaryCard extends State<DiaryCard> {
                     child: Text(
                       DateFormat('dd').format(diary.createTime),
                       textAlign: TextAlign.center,
-                      style:
-                      TextStyle(fontSize: 35.0, fontWeight: FontWeight.w400),
+                      style: TextStyle(
+                          fontSize: 35.0, fontWeight: FontWeight.w400),
                     ),
                   ),
                   Container(
                     margin: EdgeInsets.only(bottom: 8.0),
                     child: Text(
-                      DateFormat(DateFormat.ABBR_WEEKDAY).format(diary.createTime),
+                      DateFormat(DateFormat.ABBR_WEEKDAY)
+                          .format(diary.createTime),
                       textAlign: TextAlign.center,
                       style: TextStyle(fontSize: 16.0),
                     ),
@@ -272,7 +273,8 @@ class _DiaryCard extends State<DiaryCard> {
                             children: <Widget>[
                               Container(
                                 child: Text(
-                                  DateFormat(DateFormat.YEAR_ABBR_MONTH).format(diary.createTime),
+                                  DateFormat(DateFormat.YEAR_ABBR_MONTH)
+                                      .format(diary.createTime),
                                   style: TextStyle(
                                       color: Colors.white, fontSize: 20.0),
                                 ),
@@ -287,7 +289,8 @@ class _DiaryCard extends State<DiaryCard> {
                               ),
                               Container(
                                 child: Text(
-                                  DateFormat('${DateFormat.WEEKDAY} HH:mm:ss').format(diary.createTime),
+                                  DateFormat('${DateFormat.WEEKDAY} HH:mm:ss')
+                                      .format(diary.createTime),
                                   style: TextStyle(
                                       color: Colors.white, fontSize: 15.0),
                                 ),
@@ -317,7 +320,11 @@ class _DiaryCard extends State<DiaryCard> {
                     Expanded(
                       child: ZefyrScaffold(
                         child: ZefyrEditor(
-                          enabled: false,
+//                          enabled: false,
+                          mode: ZefyrMode(
+                              canEdit: false,
+                              canFormat: false,
+                              canSelect: true),
                           imageDelegate: MyAppZefyrImageDelegate(context),
                           controller: _controller,
                           focusNode: _focusNode,
@@ -350,7 +357,9 @@ class _DiaryCard extends State<DiaryCard> {
                               Container(
                                 margin: EdgeInsets.only(right: 10.0),
                                 child: Icon(
-                                  diary.isPublic ? Icons.lock_open : Icons.lock_outline,
+                                  diary.isPublic
+                                      ? Icons.lock_open
+                                      : Icons.lock_outline,
                                   color: Colors.white,
                                 ),
                               ),
@@ -396,8 +405,8 @@ class _DiaryCard extends State<DiaryCard> {
         if (action == 'edit') {
           Navigator.push(context,
               MaterialPageRoute(builder: (BuildContext context) {
-                return DiaryEditPage(diary: diary);
-              }));
+            return DiaryEditPage(diary: diary);
+          }));
         }
       },
       child: _buildCard(context),

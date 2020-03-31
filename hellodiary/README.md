@@ -11,11 +11,11 @@
 
 不过，虽然dart使用起来开始不太适应，不过看久，也慢慢接受，上手还算简单。
 
-PS： 由于flutter生态比较小，富文本编辑器没找到相对好用的。找到一个zefyr，可以勉强使用，当有BUG，
-虽然不是由于zefyr引入，但作者好像不打算修复。参考修改：
+~~PS： 由于flutter生态比较小，富文本编辑器没找到相对好用的。找到一个zefyr，可以勉强使用，当有BUG，
+虽然不是由于zefyr引入，但作者好像不打算修复。参考修改：~~
 
-https://github.com/tdh8316/zefyr/commit/614fa2b34b5e7324851f97108fe7cd9d9fb9757f
-packages/zefyr/lib/src/widgets/editable_text.dart 
+~~https://github.com/tdh8316/zefyr/commit/614fa2b34b5e7324851f97108fe7cd9d9fb9757f
+packages/zefyr/lib/src/widgets/editable_text.dart~~
 
 ```dart
 - import 'package:flutter/cupertino.dart';
@@ -38,3 +38,13 @@ packages/zefyr/lib/src/widgets/editable_text.dart
 <td><img src="https://raw.githubusercontent.com/buf1024/monthproj/master/hellodiary/assets/images/6.png" /></td>
 </tr>
 </table>
+
+### 备注
+由于flutter相对不稳定，版本的升级，可能导致程序无法编译和运行，当前使用的sdk为:
+```
+#flutter --version
+Flutter 1.12.13+hotfix.8 • channel stable • https://github.com/flutter/flutter.git
+Framework • revision 0b8abb4724 (7 weeks ago) • 2020-02-11 11:44:36 -0800
+Engine • revision e1e6ced81d
+Tools • Dart 2.7.0
+```

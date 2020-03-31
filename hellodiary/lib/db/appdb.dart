@@ -45,6 +45,7 @@ class AppDb {
   }
 
   Future _createTable(Database db) async {
+    // ignore: missing_return
     db.transaction((Transaction txn) {
       txn.execute('''
               create table user(

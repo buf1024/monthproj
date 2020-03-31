@@ -53,6 +53,7 @@ class _HomePage extends State<HomePage> {
       _hideFooter();
     });
 
+    // ignore: missing_return
     SystemChannels.lifecycle.setMessageHandler((message) {
       debugPrint('lifecycle message: $message');
       if (message == AppLifecycleState.resumed.toString()) {
@@ -68,11 +69,16 @@ class _HomePage extends State<HomePage> {
   void _protect() {
     DiaryBloc diaryBloc = BlocProvider.of(context);
     User user = diaryBloc.user;
-    if (user != null && user.setting.protect.isNotEmpty && !diaryBloc.showPicker) {
-      Navigator.of(context).push(
-          MaterialPageRoute(builder: (BuildContext context) {
-            return PasswordPage(isCheckRole: true, pass: user.setting.protect,);
-          }));
+    if (user != null &&
+        user.setting.protect.isNotEmpty &&
+        !diaryBloc.showPicker) {
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (BuildContext context) {
+        return PasswordPage(
+          isCheckRole: true,
+          pass: user.setting.protect,
+        );
+      }));
     }
   }
 
@@ -427,21 +433,19 @@ class _HomePage extends State<HomePage> {
                     Container(
                       height: 40.0,
                       child: InkWell(
-                        onTap: () {
-                          setState(() {
-                            _selectedDate = DateTime.now();
-                            DiaryBloc diaryBloc = BlocProvider.of(context);
-                            diaryBloc.getDiaryView(_selectedDate);
-                          });
-                        },
-                        child: Container(
-                          margin: EdgeInsets.only(left: 5.0),
-                          child: Icon(
-                            Icons.today,
-                            color: Theme.of(context).primaryColor,
-                          )
-                        )
-                      ),
+                          onTap: () {
+                            setState(() {
+                              _selectedDate = DateTime.now();
+                              DiaryBloc diaryBloc = BlocProvider.of(context);
+                              diaryBloc.getDiaryView(_selectedDate);
+                            });
+                          },
+                          child: Container(
+                              margin: EdgeInsets.only(left: 5.0),
+                              child: Icon(
+                                Icons.today,
+                                color: Theme.of(context).primaryColor,
+                              ))),
                     ),
                     Container(
                       height: 40.0,
@@ -672,7 +676,8 @@ class _HomePage extends State<HomePage> {
                                       right: BorderSide(color: Colors.grey))),
                               child: Column(
                                 children: <Widget>[
-                                  Text('${stat != null && stat.wordCount != null ? stat.wordCount : 0}'),
+                                  Text(
+                                      '${stat != null && stat.wordCount != null ? stat.wordCount : 0}'),
                                   Text(S.of(context).wordCount)
                                 ],
                               ),
@@ -684,7 +689,8 @@ class _HomePage extends State<HomePage> {
                               decoration: BoxDecoration(),
                               child: Column(
                                 children: <Widget>[
-                                  Text('${stat != null && stat.imageCount != null ? stat.imageCount : 0}'),
+                                  Text(
+                                      '${stat != null && stat.imageCount != null ? stat.imageCount : 0}'),
                                   Text(S.of(context).imageCount)
                                 ],
                               ),
@@ -734,10 +740,11 @@ class _HomePage extends State<HomePage> {
                                 margin: EdgeInsets.all(3.0),
                                 child: InkWell(
                                   onTap: () async {
-                                    Navigator.push(context,
-                                        MaterialPageRoute(builder: (BuildContext context) {
-                                          return DiaryEditPage(diary: diaryImage.item1);
-                                        }));
+                                    Navigator.push(context, MaterialPageRoute(
+                                        builder: (BuildContext context) {
+                                      return DiaryEditPage(
+                                          diary: diaryImage.item1);
+                                    }));
                                   },
                                   child: ClipRRect(
                                     borderRadius:
@@ -766,13 +773,13 @@ class _HomePage extends State<HomePage> {
       builder: (BuildContext context, AsyncSnapshot<TabIndex> snapshot) {
         return Container(
           decoration: BoxDecoration(
-              image: (setting == null || setting.background.isEmpty) ?
-              DecorationImage(
-                  image: AssetImage('assets/images/background.png'),
-                  fit: BoxFit.fill) :
-              DecorationImage(
-                  image: FileImage(File(setting.background)),
-                  fit: BoxFit.fill)),
+              image: (setting == null || setting.background.isEmpty)
+                  ? DecorationImage(
+                      image: AssetImage('assets/images/background.png'),
+                      fit: BoxFit.fill)
+                  : DecorationImage(
+                      image: FileImage(File(setting.background)),
+                      fit: BoxFit.fill)),
           height: MediaQuery.of(context).size.height - kToolbarHeight,
           child: PageView(
             controller: _pageController,
@@ -817,7 +824,9 @@ class _HomePage extends State<HomePage> {
                   ),
                   Container(
                     child: Text(
-                      stat == null ? S.of(context).diaryCount('0') : S.of(context).diaryCount('${stat.diaryCount}'),
+                      stat == null
+                          ? S.of(context).diaryCount('0')
+                          : S.of(context).diaryCount('${stat.diaryCount}'),
                       style: TextStyle(color: Colors.white),
                     ),
                   )
