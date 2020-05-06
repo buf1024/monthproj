@@ -34,7 +34,10 @@ ClipRect(
 ),
 ```
 要想自绘得心应手，必不可少的熟练掌握`Canvas`和`Path`的使用。示例：
-![优惠券](https://raw.githubusercontent.com/buf1024/monthproj/master/flutter-daydayup/custom_paint/assets/images/custom_paint.jpg)
+
+`CustomPaint`模拟优惠券:
+
+<img src="https://raw.githubusercontent.com/buf1024/monthproj/master/flutter-daydayup/custom_paint/assets/images/custom_paint.jpg" alt="优惠券" width="20%" height="20%"/>
 
 与之类似的组件有`ClipXX`，剪裁组件，提供`ShapeBorder`，边框修饰（剪裁），属性的组件。
 
@@ -81,7 +84,9 @@ class MyShapeBorder extends ShapeBorder {
   }
 }
 ```
-![电池](https://raw.githubusercontent.com/buf1024/monthproj/master/flutter-daydayup/custom_paint/assets/images/battery.jpg)
+`ShapeBorder`模拟电池
+
+<img src="https://raw.githubusercontent.com/buf1024/monthproj/master/flutter-daydayup/custom_paint/assets/images/battery.jpg" alt="电池" width="20%" height="20%"/>
 
 ### `ClipXX`，剪裁组件
 剪裁组件通过剪裁外边框实现特殊形状，剪裁区域可以通过 `clipper`指定，可通过实现 `CustomClipper<Rect>`抽象类提供自定义剪裁

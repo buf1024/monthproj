@@ -20,7 +20,9 @@ flutter动画大体分两类：一类是被称为隐式动画widget，这类widg
 ```
 
 模拟日历翻转效果：
-<img src="https://raw.githubusercontent.com/buf1024/monthproj/master/flutter-daydayup/animation/assets/images/calendar.gif" alt="日历翻转" width="25%" height="25%" align="middle" />
+
+<img src="https://raw.githubusercontent.com/buf1024/monthproj/master/flutter-daydayup/animation/assets/images/calendar.gif" alt="日历翻转" width="20%" height="25%"/>
 
 模拟卡片翻转效果：
-<img src="https://raw.githubusercontent.com/buf1024/monthproj/master/flutter-daydayup/animation/assets/images/card.gif" alt="卡片翻转" width="25%" height="25%" align="middle" />
+
+<img src="https://raw.githubusercontent.com/buf1024/monthproj/master/flutter-daydayup/animation/assets/images/card.gif" alt="卡片翻转" width="20%" height="20%"/>
