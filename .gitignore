@@ -44,6 +44,8 @@ node_modules
 # Debug files
 *.dSYM/
 *.class
+*/**/ios/
+*/**/android/
 ios/build/*
 android/build/*
 android/app/build/*
