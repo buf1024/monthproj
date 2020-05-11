@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wave_paint/wave.dart';
+import 'package:wave_paint/wave2.dart';
 
 void main() => runApp(MyApp());
 
@@ -45,22 +46,22 @@ class _MyHomePageState extends State<MyHomePage> {
                 }));
               },
               child: Text(
-                'CustomPaintDemo',
+                'CustomPaintDemo wave',
               ),
             ),
-//            MaterialButton(
-//              color: Colors.orangeAccent,
-//              shape: StadiumBorder(),
-//              onPressed: () {
-//                Navigator.of(context)
-//                    .push(MaterialPageRoute(builder: (BuildContext context) {
-//                  return ShapeBorderDemo();
-//                }));
-//              },
-//              child: Text(
-//                'ShapeBorderDemo',
-//              ),
-//            ),
+            MaterialButton(
+              color: Colors.orangeAccent,
+              shape: StadiumBorder(),
+              onPressed: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (BuildContext context) {
+                  return WaveWidget2Demo2();
+                }));
+              },
+              child: Text(
+                'CustomPaintDemo wave',
+              ),
+            ),
           ],
         ),
       ), // This trailing comma makes auto-formatting nicer for build methods.

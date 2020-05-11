@@ -39,6 +39,10 @@ ClipRect(
 
 <img src="https://raw.githubusercontent.com/buf1024/monthproj/master/flutter-daydayup/custom_paint/assets/images/custom_paint.jpg" alt="优惠券" width="20%" height="20%"/>
 
+`CustomPaint`模拟刮刮乐:
+
+<img src="https://raw.githubusercontent.com/buf1024/monthproj/master/flutter-daydayup/custom_paint/assets/images/lucky_paint.gif" alt="刮刮乐" width="20%" height="20%"/>
+
 与之类似的组件有`ClipXX`，剪裁组件，提供`ShapeBorder`，边框修饰（剪裁），属性的组件。
 
 ### `ShapeBorder`属性

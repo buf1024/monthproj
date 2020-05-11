@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:custom_paint/cust_paint.dart';
 import 'package:custom_paint/shape_border.dart';
+import 'package:custom_paint/lucky_paint.dart';
 
 void main() => runApp(MyApp());
 
@@ -62,6 +63,21 @@ class _MyHomePageState extends State<MyHomePage> {
                 'ShapeBorderDemo',
               ),
             ),
+            MaterialButton(
+              color: Colors.orangeAccent,
+              shape: BeveledRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(10))
+              ),
+              onPressed: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (BuildContext context) {
+                  return LuckyFunDemo();
+                }));
+              },
+              child: Text(
+                '刮刮乐',
+              ),
+            )
           ],
         ),
       ), // This trailing comma makes auto-formatting nicer for build methods.

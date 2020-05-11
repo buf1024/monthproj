@@ -1,16 +1,13 @@
-# wave_paint
+## 水波纹
 
-A new Flutter project.
+水波纹的实现本质上是非常简单的动画和自绘组件的运用。
 
-## Getting Started
+这里用两种实现方式（具体是实现方式多样），两种方式都是运用到了二次贝塞尔曲线的，原理较为简单。
 
-This project is a starting point for a Flutter application.
+第一种方式，在容器的左右两侧，分别设置两点，分别为二次贝塞尔曲线的开始点和结束点，取开始和中间某点为控制点。简单实现效果如下：
 
-A few resources to get you started if this is your first Flutter project:
+<img src="https://raw.githubusercontent.com/buf1024/monthproj/master/flutter-daydayup/wave_paint/assets/images/wave.gif" alt="水波纹" width="20%" height="20%"/>
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+第一种方式，预先画好水波纹，左右相对有一定的容器溢出，然后对画好的水波纹进行左右移动动画控制，看起来就是运动的。简单实现效果如下：
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<img src="https://raw.githubusercontent.com/buf1024/monthproj/master/flutter-daydayup/wave_paint/assets/images/wave2.gif" alt="水波纹" width="20%" height="20%"/>
