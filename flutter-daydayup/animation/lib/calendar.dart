@@ -63,7 +63,7 @@ class _CalendarWidgetState extends State<CalendarWidget>
         Tween<double>(begin: 0.0001, end: 0.003).animate(animationController);
     animation =
         Tween<double>(begin: 0, end: pi * 0.5).animate(animationController);
-
+    
     tm = Timer.periodic(Duration(seconds: 1), (Timer timer) {
       setState(() {
         animateStatus = _CalendarAnimateStatus.TopDown;

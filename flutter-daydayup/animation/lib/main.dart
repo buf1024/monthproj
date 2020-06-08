@@ -1,7 +1,8 @@
-import 'package:animation/calendar.dart';
 import 'package:flutter/material.dart';
 
+import 'package:animation/calendar.dart';
 import 'card.dart';
+import 'hero.dart';
 
 void main() => runApp(MyApp());
 
@@ -62,6 +63,18 @@ class _MyHomePageState extends State<MyHomePage> {
                 '卡片翻转动画',
               ),
             ),
+            MaterialButton(
+              color: Colors.orangeAccent,
+              onPressed: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (BuildContext context) {
+                  return HeroAnimation();
+                }));
+              },
+              child: Text(
+                'Hero动画',
+              ),
+            )
           ],
         ),
       ), // This trailing comma makes auto-formatting nicer for build methods.
