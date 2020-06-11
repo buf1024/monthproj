@@ -74,6 +74,9 @@ import 'package:widget_demo/material/layout/Layout.dart';
 import 'package:widget_demo/animation_motion/transition.dart';
 import 'package:widget_demo/animation_motion/animate_widget.dart';
 
+// interaction model widgets
+import 'package:widget_demo/interaction/interaction.dart';
+
 class WidgetFactory {
   static WidgetFactory _factory;
 
@@ -161,6 +164,9 @@ class WidgetFactory {
 
     // animation&motion
     _addGroup(<WrapWidget>[TransitionWidget(), AnimatedTheWidget()]);
+
+    // // interaction model widgets
+    _addGroup(<WrapWidget>[InteractionWidget()]);
   }
 
   void _addGroup(List<WrapWidget> widgets) {

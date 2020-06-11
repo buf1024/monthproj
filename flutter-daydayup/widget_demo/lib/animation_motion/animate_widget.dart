@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:widget_demo/wrap_widget.dart';
@@ -13,6 +15,13 @@ AnimatedDefaultTextStyle 文本的TextStyle改变时动画效果。
 AnimatedModalBarrier 类似对话框的罩层。 -- 使用ColorTween不要使用Tween<Color>泛型
 AnimatedPhysicalModel 增加物理层，borderRadius 和 elevation 这两个属性有动画。
 AnimatedPositioned Positioned动画版本。
+AnimatedSize 自动在孩子的size变化应用动画。 貌似变小不会显示动画。
+AnimatedWidget 是要传入一个 Listenable的，通常是AnimatedController, 也可以是ChangeNotifier或ValueNotifier等Listenable.
+  需要继承AnimatedWidget实现动画。貌似用起来没有AnimatedBuilder或TweenBuilder方便
+AnimatedList 增加或删除item增加动画效果的List。通过 AnimatedListState 控制状态。
+  通过提高GlobalKey<AnimatedListState>或AnimatedList.of 可获取状态。
+
+AnimationBuilder和TweenAnimationBuilder性质是一致的，都是完全手工控制动画，只是传的参数不一样一个是Listenable一个是Tween
 
   关联组件：
 AnimatedPadding, which is a subset of this widget that only supports animating the padding.
@@ -41,7 +50,7 @@ class _AnimatedTheWidget extends StatefulWidget {
 }
 
 class _AnimatedTheWidgetState extends State<_AnimatedTheWidget>
-    with SingleTickerProviderStateMixin {
+    with TickerProviderStateMixin {
   double _opacity = 1.0;
 
   double _containerWidth = 0;
@@ -61,9 +70,20 @@ class _AnimatedTheWidgetState extends State<_AnimatedTheWidget>
   double _posLeft = 0;
   double _posTop = 0;
 
+  Size _size = Size(120, 120);
+
+  AnimationController _widgetAnimationController;
+
+  GlobalKey<AnimatedListState> _listKey = GlobalKey<AnimatedListState>();
+
+  List<int> _list = List.generate(3, (index) => index);
+
   @override
   void initState() {
     _animationController =
+        AnimationController(duration: Duration(seconds: 1), vsync: this);
+
+    _widgetAnimationController =
         AnimationController(duration: Duration(seconds: 1), vsync: this);
     super.initState();
   }
@@ -71,6 +91,7 @@ class _AnimatedTheWidgetState extends State<_AnimatedTheWidget>
   @override
   void dispose() {
     _animationController.dispose();
+    _widgetAnimationController.dispose();
     super.dispose();
   }
 
@@ -326,6 +347,113 @@ class _AnimatedTheWidgetState extends State<_AnimatedTheWidget>
         });
   }
 
+  Widget _buildAnimatedSize() {
+    return _container(
+        text: 'AnimatedSize',
+        child: Container(
+          child: AnimatedSize(
+            duration: Duration(milliseconds: 500),
+            child: Container(
+              width: _size.width,
+              height: _size.height,
+              color: Colors.purpleAccent,
+//            child: Image.asset(
+//              'assets/images/mine.png',
+//              fit: BoxFit.contain,
+//            ),
+            ),
+            vsync: this,
+          ),
+        ),
+        onPressed: () {
+          setState(() {
+            if (_size == Size(50, 50)) {
+              _size = Size(120, 120);
+            } else {
+              _size = Size(50, 50);
+            }
+          });
+        });
+  }
+
+  Widget _buildAnimatedWidget() {
+    return _container(
+        text: 'AnimatedWidget',
+        child: _AnimatedWidget(
+          controller: Tween<double>(begin: 0.5, end: 1)
+              .animate(_widgetAnimationController),
+        ),
+        onPressed: () {
+          setState(() {
+            if (_widgetAnimationController.status ==
+                AnimationStatus.completed) {
+              _widgetAnimationController.reverse();
+            } else {
+              _widgetAnimationController.forward();
+            }
+          });
+        });
+  }
+
+  Widget _buildAnimatedList() {
+    return _container(
+        text: 'AnimatedList',
+        child: Container(
+          height: 200,
+          child: AnimatedList(
+            key: _listKey,
+            itemBuilder:
+                (BuildContext context, int index, Animation<double> animation) {
+              return SlideTransition(
+                position: Tween(begin: Offset(1.0, 0.0), end: Offset(0, 0))
+                    .animate(animation),
+                child: ListTile(
+                  leading: Text('#$index'),
+                  title: Text('主标题'),
+                  subtitle: Text('副标题'),
+                  trailing: MaterialButton(
+                    onPressed: () {
+                      print('onPressed delete');
+                      _listKey.currentState.removeItem(index,
+                          (context, animation) {
+                        return SlideTransition(
+                            position: Tween(
+                                    begin: Offset(0.0, 0.0),
+                                    end: Offset(1.0, 0))
+                                .animate(animation),
+                            child: ListTile(
+                              leading: Text('#$index'),
+                              title: Text('主标题'),
+                              subtitle: Text('副标题'),
+                            ));
+                      });
+                      _list.removeAt(index);
+                    },
+                    child: Text('删除'),
+                  ),
+                ),
+              );
+            },
+            initialItemCount: _list.length,
+          ),
+        ),
+        onPressed: () {
+          print('onPressed add: ${_list.length}');
+          _listKey.currentState
+              .insertItem(_list.length, duration: Duration(milliseconds: 500));
+          _list.add(_list.length);
+        });
+  }
+
+  Widget _buildAnimationBuilder() {
+    return _container(
+        text: 'AnimationBuilder',
+        child: Container(
+          child: _AnimationBuilderWidget(),
+        ),
+        onPressed: () {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -337,9 +465,116 @@ class _AnimatedTheWidgetState extends State<_AnimatedTheWidget>
           _buildAnimatedDefaultTextstyle(),
           _buildAnimatedModalBarrier(),
           _buildAnimatedPhysicalModel(),
-          _buildAnimatedPosition()
+          _buildAnimatedPosition(),
+          _buildAnimatedSize(),
+          _buildAnimatedWidget(),
+          _buildAnimatedList(),
+          _buildAnimationBuilder(),
         ],
       ),
+    );
+  }
+}
+
+class _AnimatedWidget extends AnimatedWidget {
+  Animation<double> controller;
+
+  _AnimatedWidget({this.controller}) : super(listenable: controller);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 120 * controller.value,
+      height: 120 * controller.value,
+      color: Colors.orangeAccent,
+      child: Image.asset(
+        'assets/images/mine.png',
+        fit: BoxFit.contain,
+      ),
+    );
+  }
+}
+
+class _AnimationBuilderWidget extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => _AnimationBuilderWidgetState();
+}
+
+class _AnimationBuilderWidgetState extends State<_AnimationBuilderWidget>
+    with SingleTickerProviderStateMixin {
+  AnimationController animationController;
+
+  @override
+  void initState() {
+    animationController =
+        AnimationController(duration: Duration(seconds: 1), vsync: this);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    animationController.dispose();
+    super.dispose();
+  }
+
+  double _x() {
+    var x = animationController.value * (300-10);
+    return x;
+  }
+
+  double _y() {
+    var y = sin(2 * pi * animationController.value) * 100 + 100;
+    return y;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: animationController,
+      builder: (BuildContext context, Widget child) {
+        return Container(
+          width: 300,
+          height: 300,
+          child: Column(
+            children: <Widget>[
+              Container(
+                width: 300,
+                height: 200,
+                decoration: BoxDecoration(border: Border.all()),
+                child: Stack(
+                  children: <Widget>[
+                    Positioned(
+                      left: _x(),
+                      top: _y(),
+                      child: ClipOval(
+                        child: Container(
+                          width: 10,
+                          height: 10,
+                          color: Colors.orangeAccent,
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              MaterialButton(
+                onPressed: () {
+                  print('on press ${animationController.status}');
+                  if (animationController.status == AnimationStatus.completed) {
+                    animationController.reverse();
+                  }
+                  if (animationController.status == AnimationStatus.dismissed) {
+                    animationController.forward();
+                  }
+                  setState(() {});
+                },
+                color: Colors.purpleAccent,
+                child: Text('重新开始'),
+              )
+            ],
+          ),
+        );
+      },
     );
   }
 }
