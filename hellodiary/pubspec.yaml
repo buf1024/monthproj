@@ -37,7 +37,7 @@ dependencies:
   rxdart: ^0.23.1
   zefyr: ^0.10.0
   quill_delta: ^1.0.1
-  intl: ^0.16.0
+  intl: ^0.17.0
   flutter_markdown: ^0.3.4
   package_info: ^0.4.0+16
 

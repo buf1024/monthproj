@@ -54,3 +54,5 @@ yarn.lock
 *-debug.apk
 *-release.apk
 .gradle/
+*.lock
+.flutter-plugins-dependencies
