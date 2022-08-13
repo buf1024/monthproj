@@ -1,6 +1,5 @@
 
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:widget_demo/wrap_widget.dart';
 
@@ -65,21 +64,21 @@ class XXXButtonWidget extends WrapWidget {
             onPress(context, 'IconButton');
           },
         ),
-        OutlineButton(
-          color: Colors.deepPurpleAccent,
-          onPressed: () {
-            onPress(context, 'OutlineButton');
-          },
-          child: Text('OutlineButton'),
-        ),
-        RaisedButton(
-          color: Colors.redAccent,
-          textColor: Colors.white,
-          onPressed: () {
-            onPress(context, 'RaisedButton');
-          },
-          child: Text('RaisedButton'),
-        ),
+        // OutlineButton(
+        //   color: Colors.deepPurpleAccent,
+        //   onPressed: () {
+        //     onPress(context, 'OutlineButton');
+        //   },
+        //   child: Text('OutlineButton'),
+        // ),
+        // RaisedButton(
+        //   color: Colors.redAccent,
+        //   textColor: Colors.white,
+        //   onPressed: () {
+        //     onPress(context, 'RaisedButton');
+        //   },
+        //   child: Text('RaisedButton'),
+        // ),
       ],
     );
   }
