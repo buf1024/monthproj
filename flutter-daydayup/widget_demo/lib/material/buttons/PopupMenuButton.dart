@@ -1,7 +1,4 @@
-import 'dart:math';
-import 'dart:ui';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:widget_demo/wrap_widget.dart';
 
@@ -31,7 +28,7 @@ class _PopupMenuButtonWidget extends StatefulWidget {
 }
 
 class _PopupMenuButtonWidgetState extends State<_PopupMenuButtonWidget> {
-  String selectValue;
+  late String selectValue;
 
   @override
   void initState() {
@@ -45,7 +42,7 @@ class _PopupMenuButtonWidgetState extends State<_PopupMenuButtonWidget> {
       initialValue: selectValue,
       onSelected: (value) {
         setState(() {
-          selectValue = value;
+          selectValue = value.toString();
         });
       },
       icon: Icon(Icons.arrow_downward),

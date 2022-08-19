@@ -1,8 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class LuckyFunDemo extends StatelessWidget {
-  LuckyFunDemo({Key key}) : super(key: key);
+  LuckyFunDemo({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -91,7 +90,7 @@ class _LuckWidgetDemoState extends State<LuckWidget> {
 class MyLuckyPainter extends CustomPainter {
   final Path path;
 
-  MyLuckyPainter({@required this.path});
+  MyLuckyPainter({required this.path});
 
   @override
   void paint(Canvas canvas, Size size) {

@@ -40,6 +40,7 @@ dependencies:
   intl: ^0.17.0
   flutter_markdown: ^0.3.4
   package_info: ^0.4.0+16
+  hex: ^0.2.0
 
 dev_dependencies:
   flutter_test:

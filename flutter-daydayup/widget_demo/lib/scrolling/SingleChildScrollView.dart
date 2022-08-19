@@ -31,7 +31,7 @@ class _SingleChildScrollViewWidget extends StatefulWidget {
 
 class _SingleChildScrollViewWidgetState extends State<_SingleChildScrollViewWidget> {
 
-  List<double> data;
+  late List<double> data;
 
   @override
   void initState() {

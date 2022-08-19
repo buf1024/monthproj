@@ -25,7 +25,7 @@ class _ScrollbarWidget extends StatefulWidget {
 
 class _ScrollbarWidgetState extends State<_ScrollbarWidget> {
 
-  List<double> data;
+  late List<double> data;
 
   @override
   void initState() {

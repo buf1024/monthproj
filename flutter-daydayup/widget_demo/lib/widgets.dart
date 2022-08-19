@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:widget_demo/wrap_widget.dart';
 
 // paint_effect
@@ -78,12 +77,14 @@ import 'package:widget_demo/animation_motion/animate_widget.dart';
 import 'package:widget_demo/interaction/interaction.dart';
 
 class WidgetFactory {
-  static WidgetFactory _factory;
+  // static WidgetFactory _factory;
 
-  Map<String, List<WrapWidget>> _widgets;
+  static WidgetFactory _factory = WidgetFactory._internal();
+
+  Map<String, List<WrapWidget>> _widgets = Map<String, List<WrapWidget>>();
 
   WidgetFactory._internal() {
-    _widgets = Map<String, List<WrapWidget>>();
+    // _widgets = Map<String, List<WrapWidget>>();
 
     // paint_effect
     _addGroup(<WrapWidget>[
@@ -179,13 +180,13 @@ class WidgetFactory {
   }
 
   factory WidgetFactory() {
-    if (_factory == null) {
-      _factory = WidgetFactory._internal();
-    }
+    // if (_factory == null) {
+    //   _factory = WidgetFactory._internal();
+    // }
     return _factory;
   }
 
-  List<WrapWidget> getWidgets(String group) => _widgets[group];
+  List<WrapWidget>? getWidgets(String group) => _widgets[group];
 
-  List<String> geGroups() => _widgets.keys.toList();
+  List<String> getGroups() => _widgets.keys.toList();
 }

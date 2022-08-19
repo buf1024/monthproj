@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:widget_demo/widgets.dart';
 import 'package:widget_demo/wrap_widget.dart';
@@ -26,22 +25,28 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatelessWidget {
   final String title;
-  final String group;
+  final String? group;
 
-  MyHomePage({Key key, this.title, this.group}) : super(key: key);
+  MyHomePage({Key? key, required this.title, this.group}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    var list = group == null ? WidgetFactory().geGroups() : WidgetFactory().getWidgets(group);
+    var list = group == null ? WidgetFactory().getGroups() : WidgetFactory().getWidgets(group!);
+    var isEmpty = true;
+    if(list != null) {
+      if(list.isNotEmpty) {
+        isEmpty = false;
+      }
+    }
     return Scaffold(
         appBar: AppBar(
           title: Text(title),
         ),
-        body: list.length > 0
+        body: !isEmpty
             ? ListView.separated(
                 itemBuilder: (BuildContext context, int index) {
-                  var item = list[index];
-                  var title = item is WrapWidget ? item.title : item;
+                  var item = list![index];
+                  String title = item is WrapWidget ? item.title : item as String;
                   return ListTile(
                       title: Text(
                         title,
@@ -59,7 +64,7 @@ class MyHomePage extends StatelessWidget {
                 separatorBuilder: (BuildContext context, int index) {
                   return Divider();
                 },
-                itemCount: list.length)
+                itemCount: list!.length)
             : Center(
                 child: Text('空空如也~'),
               ));

@@ -1,4 +1,3 @@
-import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:widget_demo/wrap_widget.dart';
@@ -33,7 +32,7 @@ class NestedScrollViewWidget extends WrapWidget {
 class _NestedScrollViewWidget extends StatefulWidget {
   final String title;
 
-  _NestedScrollViewWidget({this.title});
+  _NestedScrollViewWidget({required this.title});
 
   @override
   State<StatefulWidget> createState() => _NestedScrollViewWidgetState();
@@ -41,12 +40,12 @@ class _NestedScrollViewWidget extends StatefulWidget {
 
 class _NestedScrollViewWidgetState extends State<_NestedScrollViewWidget>
     with SingleTickerProviderStateMixin {
-  TabController tabController;
-  List<String> tabs;
+  late TabController tabController;
+  late List<String> tabs;
 
   @override
   void initState() {
-    tabs = List<String>();
+    tabs = <String>[];
     tabs.add('Tab 1');
     tabs.add('Tab 2');
     tabs.add('Tab 3');
@@ -112,7 +111,7 @@ class _NestedScrollViewWidgetState extends State<_NestedScrollViewWidget>
 class _SliverPersistentHeaderDelegate extends SliverPersistentHeaderDelegate {
   final TabBar child;
 
-  _SliverPersistentHeaderDelegate({this.child});
+  _SliverPersistentHeaderDelegate({required this.child});
 
   @override
   Widget build(

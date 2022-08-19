@@ -26,7 +26,7 @@ class _ScrollableWidget extends StatefulWidget {
 
 class _ScrollableWidgetState extends State<_ScrollableWidget> {
 
-  List<double> data;
+  late List<double> data;
 
   @override
   void initState() {

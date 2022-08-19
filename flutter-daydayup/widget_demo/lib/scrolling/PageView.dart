@@ -30,7 +30,7 @@ class PageViewWidget extends WrapWidget {
 class _PageViewWidgetWidget extends StatefulWidget {
   final String title;
 
-  _PageViewWidgetWidget({this.title});
+  _PageViewWidgetWidget({required this.title});
 
   @override
   State<StatefulWidget> createState() => _PageViewWidgetWidgetState();
@@ -38,12 +38,12 @@ class _PageViewWidgetWidget extends StatefulWidget {
 
 class _PageViewWidgetWidgetState extends State<_PageViewWidgetWidget>
     with SingleTickerProviderStateMixin {
-  TabController tabController;
-  List<String> tabs;
+  late TabController tabController;
+  late List<String> tabs;
 
   @override
   void initState() {
-    tabs = List<String>();
+    tabs = <String>[];
     tabs.add('Tab 1');
     tabs.add('Tab 2');
     tabs.add('Tab 3');
@@ -145,7 +145,7 @@ class _PageViewWidgetWidgetState extends State<_PageViewWidgetWidget>
 class _SliverPersistentHeaderDelegate extends SliverPersistentHeaderDelegate {
   final TabBar child;
 
-  _SliverPersistentHeaderDelegate({this.child});
+  _SliverPersistentHeaderDelegate({required this.child});
 
   @override
   Widget build(

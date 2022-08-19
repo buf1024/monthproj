@@ -31,7 +31,7 @@ class _ScrollConfigurationWidget extends StatefulWidget {
 
 class _ScrollConfigurationWidgetState extends State<_ScrollConfigurationWidget> {
 
-  List<double> data;
+  late List<double> data;
 
   @override
   void initState() {

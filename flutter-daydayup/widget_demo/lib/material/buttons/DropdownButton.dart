@@ -1,7 +1,6 @@
 import 'dart:math';
 import 'dart:ui';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:widget_demo/wrap_widget.dart';
 
@@ -32,7 +31,7 @@ class _DropdownButtonWidget extends StatefulWidget {
 }
 
 class _DropdownButtonWidgetState extends State<_DropdownButtonWidget> {
-  String selectValue;
+  late String selectValue;
 
   @override
   void initState() {
@@ -46,7 +45,7 @@ class _DropdownButtonWidgetState extends State<_DropdownButtonWidget> {
       value: selectValue,
       onChanged: (value) {
         setState(() {
-          selectValue = value;
+          selectValue = value.toString();
         });
       },
       icon: Icon(Icons.archive),

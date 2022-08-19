@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CardAnimation extends StatelessWidget {
@@ -19,8 +18,8 @@ class CardWidget extends StatefulWidget {
 enum _CardRotateStep {None, Front, Back}
 
 class _CardWidgetState extends State<CardWidget> with SingleTickerProviderStateMixin {
-  AnimationController animationController;
-  Animation<double> animation;
+  late AnimationController animationController;
+  late Animation<double> animation;
 
   _CardRotateStep step = _CardRotateStep.None;
 
@@ -68,7 +67,7 @@ class _CardWidgetState extends State<CardWidget> with SingleTickerProviderStateM
       body: Center(
         child: AnimatedBuilder(
           animation: animation,
-          builder: (BuildContext context, Widget child) {
+          builder: (BuildContext context, Widget? child) {
             return Stack(
               children: <Widget>[
                 buildBack(context),

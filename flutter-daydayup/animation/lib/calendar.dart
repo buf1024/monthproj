@@ -28,12 +28,12 @@ class CalendarWidget extends StatefulWidget {
 
 class _CalendarWidgetState extends State<CalendarWidget>
     with SingleTickerProviderStateMixin {
-  AnimationController animationController;
-  Animation<double> animation;
-  Animation<double> animationView;
+  late AnimationController animationController;
+  late Animation<double> animation;
+  late Animation<double> animationView;
   _CalendarAnimateStatus animateStatus = _CalendarAnimateStatus.None;
 
-  Timer tm;
+  late Timer tm;
 
   int value = 0;
 
@@ -90,7 +90,7 @@ class _CalendarWidgetState extends State<CalendarWidget>
         Text('demo'),
         AnimatedBuilder(
           animation: animationController,
-          builder: (BuildContext context, Widget child) {
+          builder: (BuildContext context, Widget? child) {
             return Stack(
               children: buildStackWidget(),
             );

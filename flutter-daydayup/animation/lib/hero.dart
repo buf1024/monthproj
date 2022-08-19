@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class HeroAnimation extends StatelessWidget {
@@ -18,12 +17,12 @@ class SourcePage extends StatefulWidget {
 
 class _SourcePageState extends State<SourcePage>
     with SingleTickerProviderStateMixin {
-  AnimationController animationController;
-  Offset p0, p1, p2;
+  late AnimationController animationController;
+  Offset? p0, p1, p2;
 
-  double left, top;
+  double? left, top;
 
-  OverlayEntry _overlayEntry;
+  OverlayEntry? _overlayEntry;
 
   GlobalKey _globalKey = GlobalKey();
 
@@ -35,7 +34,7 @@ class _SourcePageState extends State<SourcePage>
     animationController.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
         if (_overlayEntry != null) {
-          _overlayEntry.remove();
+          _overlayEntry!.remove();
           _overlayEntry = null;
           animationController.reset();
         }
@@ -43,7 +42,9 @@ class _SourcePageState extends State<SourcePage>
     });
 
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      RenderBox box = _globalKey.currentContext.findRenderObject();
+
+      RenderBox? box = _globalKey.currentContext?.findRenderObject() as RenderBox;
+
       p2 = box.localToGlobal(Offset.zero);
 
       print('p2:$p2');
@@ -108,18 +109,18 @@ class _SourcePageState extends State<SourcePage>
                         builder: (BuildContext context) {
                           return MaterialButton(
                             onPressed: () {
-                              RenderBox renderBox = context.findRenderObject();
+                              RenderBox? renderBox = context.findRenderObject() as RenderBox;
 
                               p0 = renderBox.localToGlobal(Offset.zero);
-                              p1 = Offset(p0.dx - 120, p0.dy - 30);
+                              p1 = Offset(p0!.dx - 120, p0!.dy - 30);
                               print('p0:$p0, p1=$p1');
 
                               _overlayEntry =
                                   OverlayEntry(builder: (BuildContext context) {
-                                    return RedPage(animationController, p0, p1, p2);
+                                    return RedPage(animationController, p0!, p1!, p2!);
                                   });
 
-                              Overlay.of(context).insert(_overlayEntry);
+                              Overlay.of(context)?.insert(_overlayEntry!);
                               animationController.forward();
                             },
                             child: Icon(Icons.add),
@@ -160,7 +161,7 @@ class RedPage extends StatefulWidget {
 }
 
 class _RedPageState extends State<RedPage> {
-  double left, top;
+  double? left, top;
 
   @override
   void initState() {
@@ -210,7 +211,7 @@ class DestPage extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     var width = MediaQuery.of(context).size.width;
-    var index = ModalRoute.of(context).settings.arguments;
+    var index = ModalRoute.of(context)?.settings.arguments;
     print('args');
     return Scaffold(
         appBar: AppBar(
@@ -222,8 +223,8 @@ class DestPage extends StatelessWidget {
               createRectTween: (begin, end) {
                 return RectTween(
                   begin: Rect.fromLTRB(
-                      begin.left, begin.top, begin.right, begin.bottom),
-                  end: Rect.fromLTRB(end.left, end.top, end.right, end.bottom),
+                      begin!.left, begin.top, begin.right, begin.bottom),
+                  end: Rect.fromLTRB(end!.left, end.top, end.right, end.bottom),
                 );
               },
               tag: 'list_$index',

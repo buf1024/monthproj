@@ -53,10 +53,7 @@ class _InteractionWidgetState extends State<_InteractionWidget> {
     super.initState();
   }
 
-  Widget _container({String text, Widget child, VoidCallback onPressed}) {
-    if (onPressed == null) {
-      onPressed = () {};
-    }
+  Widget _container({required String text, required Widget child, required VoidCallback onPressed}) {
     return Container(
       width: MediaQuery.of(context).size.width,
       margin: EdgeInsets.all(10),

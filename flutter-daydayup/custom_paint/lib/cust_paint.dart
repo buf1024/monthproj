@@ -2,7 +2,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 class CustomPaintDemo extends StatefulWidget {
-  CustomPaintDemo({Key key}) : super(key: key);
+  CustomPaintDemo({Key? key}) : super(key: key);
 
   @override
   _CustomPaintDemoState createState() => _CustomPaintDemoState();

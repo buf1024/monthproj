@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class WaveWidgetDemo extends StatelessWidget {
@@ -39,10 +38,10 @@ class WaveWidget extends StatefulWidget {
   final Color color;
 
   WaveWidget(
-      {@required this.size,
-      @required this.ratio,
-      @required this.waveHeight,
-      @required this.color,
+      {required this.size,
+      required this.ratio,
+      required this.waveHeight,
+      required this.color,
       this.startHeight = 0.0});
 
   @override
@@ -51,8 +50,8 @@ class WaveWidget extends StatefulWidget {
 
 class _WaveWidgetState extends State<WaveWidget>
     with SingleTickerProviderStateMixin {
-  AnimationController animationController;
-  Animation<double> animation;
+  late AnimationController animationController;
+  late Animation<double> animation;
 
   @override
   void initState() {
@@ -83,7 +82,7 @@ class _WaveWidgetState extends State<WaveWidget>
   Widget build(BuildContext context) {
     return AnimatedBuilder(
       animation: animation,
-      builder: (BuildContext context, Widget child) {
+      builder: (BuildContext context, Widget? child) {
         var height =
             animation.value * (widget.waveHeight / 2) + widget.startHeight;
         if (height > widget.waveHeight / 2) {
@@ -115,7 +114,7 @@ class WavePainter extends CustomPainter {
   final Color color;
 
   WavePainter(
-      {@required this.ratio, @required this.waveHeight, @required this.color});
+      {required this.ratio, required this.waveHeight, required this.color});
 
   @override
   void paint(Canvas canvas, Size size) {

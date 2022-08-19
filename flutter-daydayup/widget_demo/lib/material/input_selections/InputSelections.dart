@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:widget_demo/wrap_widget.dart';
 
@@ -43,24 +42,24 @@ class _InputSelectionsWidget extends StatefulWidget {
 }
 
 class _InputSelectionsWidgetState extends State<_InputSelectionsWidget> {
-  List<bool> checkBoxValue;
-  bool checkBoxListTileValue;
+  late List<bool?> checkBoxValue;
+  late bool checkBoxListTileValue;
 
-  List<double> radioBoxValue;
-  double radioGroupValue;
-  double radioListTileValue;
+  late List<double> radioBoxValue;
+  late double radioGroupValue;
+  late double radioListTileValue;
 
-  List<bool> switchValue;
-  bool switchListTileValue;
+  late List<bool> switchValue;
+  late bool switchListTileValue;
 
-  List<double> sliderValue;
-  double sliderValue2;
+  late List<double> sliderValue;
+  late double sliderValue2;
 
-  TextEditingController textEditingControllerUser;
-  TextEditingController textEditingControllerPhone;
-  String textArea;
+  late TextEditingController textEditingControllerUser;
+  late TextEditingController textEditingControllerPhone;
+  late String textArea;
 
-  DateTime dateTimePicker;
+  late DateTime dateTimePicker;
 
   @override
   void initState() {
@@ -93,12 +92,12 @@ class _InputSelectionsWidgetState extends State<_InputSelectionsWidget> {
   }
 
   Widget _checkWidget(BuildContext context) {
-    bool _checkValue() {
-      if (checkBoxValue.any((element) => !element) &&
-          checkBoxValue.any((element) => element)) {
-        return null;
+    bool? _checkValue() {
+      if (checkBoxValue.any((element) => !element!) &&
+          checkBoxValue.any((element) => element!)) {
+        return false;
       }
-      return checkBoxValue.reduce((value, element) => value && element);
+      return checkBoxValue.reduce((value, element) => value! && element!);
     }
 
     return Container(
@@ -122,7 +121,7 @@ class _InputSelectionsWidgetState extends State<_InputSelectionsWidget> {
           ),
           Column(
             children: () {
-              List<Widget> widgets = List<Widget>();
+              List<Widget> widgets = <Widget>[];
               for (int i = 0; i < checkBoxValue.length; i++) {
                 Widget widget = Row(
                   children: <Widget>[
@@ -149,7 +148,7 @@ class _InputSelectionsWidgetState extends State<_InputSelectionsWidget> {
             value: checkBoxListTileValue,
             onChanged: (value) {
               setState(() {
-                checkBoxListTileValue = value;
+                checkBoxListTileValue = value!;
               });
             },
             title: Text('CheckboxListTile 选项'),
@@ -164,7 +163,7 @@ class _InputSelectionsWidgetState extends State<_InputSelectionsWidget> {
     return Container(
       child: Column(
         children: () {
-          List<Widget> widgets = List<Widget>();
+          List<Widget> widgets = <Widget>[];
           for (int i = 0; i < radioBoxValue.length; i++) {
             Widget widget = Row(
               children: <Widget>[
@@ -173,7 +172,7 @@ class _InputSelectionsWidgetState extends State<_InputSelectionsWidget> {
                   groupValue: radioGroupValue,
                   onChanged: (value) {
                     setState(() {
-                      radioGroupValue = value;
+                      radioGroupValue = value as double;
                     });
                   },
                 ),
@@ -199,7 +198,7 @@ class _InputSelectionsWidgetState extends State<_InputSelectionsWidget> {
     return Container(
       child: Column(
         children: () {
-          List<Widget> widgets = List<Widget>();
+          List<Widget> widgets = <Widget>[];
           for (int i = 0; i < radioBoxValue.length; i++) {
             Widget widget = Row(
               children: <Widget>[
@@ -237,7 +236,7 @@ class _InputSelectionsWidgetState extends State<_InputSelectionsWidget> {
       padding: EdgeInsets.only(left: 20, right: 20),
       child: Column(
         children: () {
-          List<Widget> widgets = List<Widget>();
+          List<Widget> widgets = <Widget>[];
           for (int i = 0; i < sliderValue.length; i++) {
             Widget widget = Row(
               children: <Widget>[
@@ -315,7 +314,7 @@ class _InputSelectionsWidgetState extends State<_InputSelectionsWidget> {
                 }).toList(),
                 onChanged: (value) {
                   setState(() {
-                    textArea = value;
+                    textArea = value.toString();
                   });
                 },
               )
@@ -334,10 +333,10 @@ class _InputSelectionsWidgetState extends State<_InputSelectionsWidget> {
       padding: EdgeInsets.only(left: 20, right: 20),
       child: Column(
         children: <Widget>[
-          FlatButton(
-            color: Colors.orangeAccent,
+          TextButton(
+            child: Text('选择日期'),
             onPressed: () async {
-              DateTime dt = await showDatePicker(
+              DateTime? dt = await showDatePicker(
                   context: context,
                   initialDate: dateTimePicker,
                   firstDate: DateTime(1990),
@@ -348,8 +347,23 @@ class _InputSelectionsWidgetState extends State<_InputSelectionsWidget> {
                 });
               }
             },
-            child: Text('选择日期'),
           ),
+          // FlatButton(
+          //   color: Colors.orangeAccent,
+          //   onPressed: () async {
+          //     DateTime dt = await showDatePicker(
+          //         context: context,
+          //         initialDate: dateTimePicker,
+          //         firstDate: DateTime(1990),
+          //         lastDate: DateTime(2030));
+          //     if (dt != null) {
+          //       setState(() {
+          //         dateTimePicker = dt;
+          //       });
+          //     }
+          //   },
+          //   child: Text('选择日期'),
+          // ),
           Text(
               '你选择: ${dateTimePicker.year.toString()}-${dateTimePicker.month.toString().padLeft(2, '0')}-${dateTimePicker.day.toString().padLeft(2, '0')}'),
           SizedBox(

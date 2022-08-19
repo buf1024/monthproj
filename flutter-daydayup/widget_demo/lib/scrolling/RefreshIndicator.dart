@@ -1,4 +1,3 @@
-import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:widget_demo/wrap_widget.dart';
@@ -26,7 +25,7 @@ class _RefreshIndicatorWidget extends StatefulWidget {
 
 class _RefreshIndicatorWidgetState extends State<_RefreshIndicatorWidget> {
 
-  List<double> data;
+  late List<double> data;
 
   @override
   void initState() {

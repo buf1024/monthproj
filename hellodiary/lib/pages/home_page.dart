@@ -284,16 +284,16 @@ class _HomePage extends State<HomePage> {
   Widget _buildDiaryTimeSwitch(BuildContext context) {
     DiaryBloc diaryBloc = BlocProvider.of(context);
     if (_isCalendar) {
-      return MonthPicker(
-          selectedDate: _selectedDate,
-          onChanged: (DateTime datetime) {
-            setState(() {
-              _selectedDate = datetime;
-              diaryBloc.getDiaryView(_selectedDate);
-            });
-          },
-          firstDate: DateTime(2015),
-          lastDate: DateTime(2025));
+      // return MonthPicker(
+      //     selectedDate: _selectedDate,
+      //     onChanged: (DateTime datetime) {
+      //       setState(() {
+      //         _selectedDate = datetime;
+      //         diaryBloc.getDiaryView(_selectedDate);
+      //       });
+      //     },
+      //     firstDate: DateTime(2015),
+      //     lastDate: DateTime(2025));
     }
     return GestureDetector(
       child: Container(
@@ -856,7 +856,7 @@ class _HomePage extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomPadding: false,
+      // resizeToAvoidBottomPadding: false,
       appBar: AppBar(
         title: _buildHeader(context),
         elevation: 0,

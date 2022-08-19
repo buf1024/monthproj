@@ -4,7 +4,7 @@ abstract class WrapWidget extends StatelessWidget {
   final String group;
   final String title;
 
-  WrapWidget({@required this.group, @required this.title});
+  WrapWidget({required this.group, required this.title});
 
   @override
   Widget build(BuildContext context) {

@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 class ShapeBorderDemo extends StatelessWidget {
@@ -30,16 +28,16 @@ class ShapeBorderDemo extends StatelessWidget {
 class MyShapeBorder extends ShapeBorder {
   @override
   // TODO: implement dimensions
-  EdgeInsetsGeometry get dimensions => null;
+  EdgeInsetsGeometry get dimensions => EdgeInsets.all(0);
 
   @override
-  Path getInnerPath(Rect rect, {TextDirection textDirection}) {
+  Path getInnerPath(Rect rect, { TextDirection? textDirection }) {
     // TODO: implement getInnerPath
-    return null;
+    return Path();
   }
 
   @override
-  Path getOuterPath(Rect rect, {TextDirection textDirection}) {
+  Path getOuterPath(Rect rect, { TextDirection? textDirection }) {
     // TODO: implement getOuterPath
     return Path()
       ..addRRect(RRect.fromRectAndRadius(rect, Radius.circular(8)))
@@ -48,13 +46,13 @@ class MyShapeBorder extends ShapeBorder {
   }
 
   @override
-  void paint(Canvas canvas, Rect rect, {TextDirection textDirection}) {
+  void paint(Canvas canvas, Rect rect, { TextDirection? textDirection }) {
   }
 
   @override
   ShapeBorder scale(double t) {
     // TODO: implement scale
-    return null;
+    return Border();
   }
 }
 

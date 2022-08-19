@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:widget_demo/wrap_widget.dart';
 
@@ -62,7 +61,7 @@ class _AnimatedTheWidgetState extends State<_AnimatedTheWidget>
   double _fontSize = 12.0;
   Color _fontColor = Colors.redAccent;
 
-  AnimationController _animationController;
+  late AnimationController _animationController;
 
   double _elevation = 0;
   BorderRadius _borderRadius = BorderRadius.zero;
@@ -72,7 +71,7 @@ class _AnimatedTheWidgetState extends State<_AnimatedTheWidget>
 
   Size _size = Size(120, 120);
 
-  AnimationController _widgetAnimationController;
+  late AnimationController _widgetAnimationController;
 
   GlobalKey<AnimatedListState> _listKey = GlobalKey<AnimatedListState>();
 
@@ -95,10 +94,7 @@ class _AnimatedTheWidgetState extends State<_AnimatedTheWidget>
     super.dispose();
   }
 
-  Widget _container({String text, Widget child, VoidCallback onPressed}) {
-    if (onPressed == null) {
-      onPressed = () {};
-    }
+  Widget _container({required String text, required Widget child, required VoidCallback onPressed}) {
     return AnimatedContainer(
       duration: Duration(milliseconds: 500),
       width: MediaQuery.of(context).size.width,
@@ -414,7 +410,7 @@ class _AnimatedTheWidgetState extends State<_AnimatedTheWidget>
                   trailing: MaterialButton(
                     onPressed: () {
                       print('onPressed delete');
-                      _listKey.currentState.removeItem(index,
+                      _listKey.currentState?.removeItem(index,
                           (context, animation) {
                         return SlideTransition(
                             position: Tween(
@@ -440,7 +436,7 @@ class _AnimatedTheWidgetState extends State<_AnimatedTheWidget>
         onPressed: () {
           print('onPressed add: ${_list.length}');
           _listKey.currentState
-              .insertItem(_list.length, duration: Duration(milliseconds: 500));
+              ?.insertItem(_list.length, duration: Duration(milliseconds: 500));
           _list.add(_list.length);
         });
   }
@@ -477,9 +473,9 @@ class _AnimatedTheWidgetState extends State<_AnimatedTheWidget>
 }
 
 class _AnimatedWidget extends AnimatedWidget {
-  Animation<double> controller;
+  final Animation<double> controller;
 
-  _AnimatedWidget({this.controller}) : super(listenable: controller);
+  _AnimatedWidget({required this.controller}) : super(listenable: controller);
 
   @override
   Widget build(BuildContext context) {
@@ -502,7 +498,7 @@ class _AnimationBuilderWidget extends StatefulWidget {
 
 class _AnimationBuilderWidgetState extends State<_AnimationBuilderWidget>
     with SingleTickerProviderStateMixin {
-  AnimationController animationController;
+  late AnimationController animationController;
 
   @override
   void initState() {
@@ -531,7 +527,7 @@ class _AnimationBuilderWidgetState extends State<_AnimationBuilderWidget>
   Widget build(BuildContext context) {
     return AnimatedBuilder(
       animation: animationController,
-      builder: (BuildContext context, Widget child) {
+      builder: (BuildContext context, Widget? child) {
         return Container(
           width: 300,
           height: 300,

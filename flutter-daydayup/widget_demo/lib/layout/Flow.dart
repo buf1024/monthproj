@@ -34,7 +34,7 @@ class _FlowWidget extends StatefulWidget {
 
 class _FlowWidgetState extends State<_FlowWidget>
     with SingleTickerProviderStateMixin {
-  AnimationController animationController;
+  late AnimationController animationController;
 
   @override
   void initState() {
@@ -86,7 +86,7 @@ class _FlowWidgetState extends State<_FlowWidget>
 class _FlowDelegate extends FlowDelegate {
   AnimationController animationController;
 
-  _FlowDelegate({this.animationController})
+  _FlowDelegate({required this.animationController})
       : super(repaint: animationController);
 
   @override
@@ -96,14 +96,16 @@ class _FlowDelegate extends FlowDelegate {
     for (int i = 0; i < context.childCount; i++) {
       row += (i % 2 == 0 ? 1 : 0);
       var sizeChild = context.getChildSize(i);
-      var dy = sizeChild.height * (row - 1) * animationController.value;
+      if(sizeChild != null) {
+        var dy = sizeChild.height * (row - 1) * animationController.value;
 
-      if (i % 2 == 0) {
-        context.paintChild(i, transform: Matrix4.translationValues(0, dy, 0));
-      } else {
-        context.paintChild(i,
-            transform: Matrix4.translationValues(
-                context.size.width - sizeChild.width, dy, 0));
+        if (i % 2 == 0) {
+          context.paintChild(i, transform: Matrix4.translationValues(0, dy, 0));
+        } else {
+          context.paintChild(i,
+              transform: Matrix4.translationValues(
+                  context.size.width - sizeChild.width, dy, 0));
+        }
       }
     }
   }

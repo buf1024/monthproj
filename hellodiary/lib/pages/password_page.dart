@@ -1,8 +1,9 @@
 import 'dart:convert';
-import 'package:convert/convert.dart';
+// import 'package:convert/convert.dart';
 import 'package:crypto/crypto.dart';
 import 'package:flutter/material.dart';
 import 'package:hellodiary/generated/i18n.dart';
+import 'package:hex/hex.dart';
 
 class PasswordPage extends StatefulWidget {
   final bool isCheckRole;
@@ -52,7 +53,8 @@ class _PasswordPage extends State<PasswordPage> {
               var passInput = inputList.join('');
               // check pass
               var passInputMD5 = md5.convert(Utf8Encoder().convert(passInput));
-              if (hex.encode(passInputMD5.bytes) == pass) {
+              // if (hex.encode(passInputMD5.bytes) == pass) {
+              if(HEX.encode(passInputMD5.bytes) == pass) {
                 isChecked = true;
                 Navigator.of(context).pop();
               } else {
@@ -78,7 +80,7 @@ class _PasswordPage extends State<PasswordPage> {
                 if(cb != null) {
                   var passInput = inputList.join('');
                   var passInputMD5 = md5.convert(Utf8Encoder().convert(passInput));
-                  var md5Str = hex.encode(passInputMD5.bytes);
+                  var md5Str = HEX.encode(passInputMD5.bytes);
                   cb(md5Str);
                 }
                 Navigator.of(context).pop();
@@ -109,7 +111,7 @@ class _PasswordPage extends State<PasswordPage> {
   }
 
   Widget _buildNumberRow(BuildContext context, int start, int end) {
-    List<Widget> widgets = List<Widget>();
+    List<Widget> widgets = <Widget>[];
     for (int i = start; i <= end; i++) {
       widgets.add(_buildNumber(i));
     }
@@ -145,7 +147,7 @@ class _PasswordPage extends State<PasswordPage> {
     return Container();
   }
   List<Widget> _buildFeedback(BuildContext context) {
-    List<Widget> widgets = List<Widget>();
+    List<Widget> widgets = <Widget>[];
     inputList.forEach((v) {
       if(v != -1) {
         widgets.add(Container(
@@ -216,7 +218,7 @@ class _PasswordPage extends State<PasswordPage> {
         return true;
       },
       child: Scaffold(
-        resizeToAvoidBottomPadding: false,
+        // resizeToAvoidBottomPadding: false,
         appBar: AppBar(
           centerTitle: true,
           title: Text(S.of(context).password),

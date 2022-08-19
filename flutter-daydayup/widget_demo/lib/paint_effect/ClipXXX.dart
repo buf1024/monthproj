@@ -105,12 +105,12 @@ class _ClipPathShape extends ShapeBorder {
   EdgeInsetsGeometry get dimensions => throw UnimplementedError();
 
   @override
-  Path getInnerPath(Rect rect, {TextDirection textDirection}) {
-    return null;
+  Path getInnerPath(Rect rect, { TextDirection? textDirection }) {
+    return Path();
   }
 
   @override
-  Path getOuterPath(Rect rect, {TextDirection textDirection}) {
+  Path getOuterPath(Rect rect, { TextDirection? textDirection }) {
     return Path()..moveTo(0, rect.height)
       ..lineTo(rect.width/2, 0)
       ..lineTo(rect.width, rect.height)
@@ -119,13 +119,13 @@ class _ClipPathShape extends ShapeBorder {
   }
 
   @override
-  void paint(Canvas canvas, Rect rect, {TextDirection textDirection}) {
+  void paint(Canvas canvas, Rect rect, { TextDirection? textDirection }) {
     // TODO: implement paint
   }
 
   @override
   ShapeBorder scale(double t) {
-    return null;
+    return Border();
   }
 
 }

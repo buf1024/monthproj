@@ -1,6 +1,4 @@
-import 'dart:math';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class WaveWidget2Demo2 extends StatelessWidget {
@@ -41,11 +39,11 @@ class WaveWidget2 extends StatefulWidget {
   final Color color;
 
   WaveWidget2(
-      {@required this.size,
-      @required this.ratio,
-      @required this.offset,
-      @required this.color,
-      @required this.waveHeight});
+      {required this.size,
+      required this.ratio,
+      required this.offset,
+      required this.color,
+      required this.waveHeight});
 
   @override
   State<StatefulWidget> createState() => _WaveWidget2State();
@@ -53,8 +51,8 @@ class WaveWidget2 extends StatefulWidget {
 
 class _WaveWidget2State extends State<WaveWidget2>
     with SingleTickerProviderStateMixin {
-  AnimationController animationController;
-  Animation<double> animation;
+  late AnimationController animationController;
+  late Animation<double> animation;
 
   @override
   void initState() {
@@ -83,7 +81,7 @@ class _WaveWidget2State extends State<WaveWidget2>
   Widget build(BuildContext context) {
     return AnimatedBuilder(
       animation: animation,
-      builder: (BuildContext context, Widget child) {
+      builder: (BuildContext context, Widget? child) {
         var offset = animation.value + widget.offset;
         return ClipRect(
           child: Container(
@@ -110,10 +108,10 @@ class WavePainter2 extends CustomPainter {
   final double waveHeight;
 
   WavePainter2(
-      {@required this.ratio,
-      @required this.offset,
-      @required this.color,
-      @required this.waveHeight});
+      {required this.ratio,
+      required this.offset,
+      required this.color,
+      required this.waveHeight});
 
   @override
   void paint(Canvas canvas, Size size) {

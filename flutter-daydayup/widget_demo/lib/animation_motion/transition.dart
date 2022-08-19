@@ -43,16 +43,16 @@ class _TransitionWidget extends StatefulWidget {
 
 class _TransitionWidgetState extends State<_TransitionWidget>
     with SingleTickerProviderStateMixin {
-  AnimationController animationController;
+  late AnimationController animationController;
 
-  Animation<double> rotaAnimation;
-  Animation<double> scaleAnimation;
-  Animation<RelativeRect> posAnimation;
-  Animation<Rect> relPosAnimation;
-  Animation<double> sizeAnimation;
-  Animation<Decoration> decoAnimation;
+  late Animation<double> rotaAnimation;
+  late Animation<double> scaleAnimation;
+  late Animation<RelativeRect> posAnimation;
+  late Animation<Rect?> relPosAnimation;
+  late Animation<double> sizeAnimation;
+  late Animation<Decoration> decoAnimation;
 
-  OverlayEntry _entry;
+  OverlayEntry? _entry;
 
   @override
   void initState() {
@@ -125,12 +125,12 @@ class _TransitionWidgetState extends State<_TransitionWidget>
   void dispose() {
     animationController.dispose();
     if (_entry != null) {
-      _entry.remove();
+      _entry!.remove();
     }
     super.dispose();
   }
 
-  Widget _container({Widget child, String text}) {
+  Widget _container({required Widget child, required String text}) {
     return Container(
       width: double.infinity,
       margin: EdgeInsets.all(20),
@@ -312,7 +312,7 @@ class _TransitionWidgetState extends State<_TransitionWidget>
         ],
       );
     });
-    Overlay.of(context).insert(_entry);
+    Overlay.of(context)?.insert(_entry!);
   }
 
   @override

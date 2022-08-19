@@ -25,8 +25,8 @@ class _ListViewWidget extends StatefulWidget {
 }
 
 class _ListViewWidgetState extends State<_ListViewWidget> {
-  List<double> data;
-  ScrollController scrollController;
+  late List<double> data;
+  late ScrollController scrollController;
 
   bool showUp = false;
   bool showDown = false;
