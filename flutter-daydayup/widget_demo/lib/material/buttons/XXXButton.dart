@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:widget_demo/wrap_widget.dart';
 
@@ -19,39 +17,45 @@ RawMaterialButton, the widget this widget is based on.
 
  */
 class XXXButtonWidget extends WrapWidget {
-  XXXButtonWidget()
-      : super(group: 'material -- 按钮', title: 'Button - 按钮类');
+  XXXButtonWidget() : super(group: 'material -- 按钮', title: 'Button - 按钮类');
 
   void onPress(BuildContext context, String button) {
-    showDialog(context: context, builder: (BuildContext context) {
-      return AlertDialog(
-        title: Text('$button - 标题'),
-        content: Text('内容 - $button'),
-        actions: <Widget>[
-          FlatButton(
-            onPressed: () => Navigator.pop(context),
-            color: Colors.orangeAccent,
-            textColor: Colors.white,
-            child: Text('取消'),
-          ),
-          FlatButton(
-            onPressed: () => Navigator.pop(context),
-            color: Colors.orangeAccent,
-            textColor: Colors.white,
-            child: Text('确定'),
-          ),
-        ],
-      );
-    });
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('$button - 标题'),
+            content: Text('内容 - $button'),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                style: TextButton.styleFrom(
+                    textStyle: TextStyle(color: Colors.white),
+                    foregroundColor: Colors.orangeAccent),
+                child: Text('取消'),
+              ),
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                style: TextButton.styleFrom(
+                    textStyle: TextStyle(color: Colors.white),
+                    foregroundColor: Colors.orangeAccent),
+                child: Text('确定'),
+              ),
+            ],
+          );
+        });
   }
 
   @override
   Widget child(BuildContext context) {
     return Column(
       children: <Widget>[
-        FlatButton(
-          color: Colors.orangeAccent,
-          textColor: Colors.white,
+        TextButton(
+          style: TextButton.styleFrom(
+              foregroundColor: Colors.orangeAccent,
+              textStyle: TextStyle(
+                color: Colors.white,
+              )),
           onPressed: () {
             onPress(context, 'FlatButton');
           },
@@ -83,4 +87,3 @@ class XXXButtonWidget extends WrapWidget {
     );
   }
 }
-

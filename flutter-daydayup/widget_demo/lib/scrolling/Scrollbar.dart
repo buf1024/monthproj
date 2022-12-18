@@ -47,7 +47,6 @@ class _ScrollbarWidgetState extends State<_ScrollbarWidget> {
     return Container(
       height: height,
       child: Scrollbar(
-        isAlwaysShown: true,
         child: ListView.builder(
           itemCount: data.length,
           physics: const AlwaysScrollableScrollPhysics(),

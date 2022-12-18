@@ -1,6 +1,3 @@
-import 'dart:math';
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:widget_demo/wrap_widget.dart';
 
@@ -20,12 +17,15 @@ class FractionalTranslationWidget extends WrapWidget {
     return Container(
       height: 200,
       width: 200,
-      decoration: BoxDecoration(
-        border: Border.all()
-      ),
+      decoration: BoxDecoration(border: Border.all()),
       child: FractionalTranslation(
         translation: Offset(0.1, 0.1),
-        child: Image.asset('assets/images/mine.png', height: 200, width: 200, fit: BoxFit.fill,),
+        child: Image.asset(
+          'assets/images/mine.png',
+          height: 200,
+          width: 200,
+          fit: BoxFit.fill,
+        ),
       ),
     );
   }

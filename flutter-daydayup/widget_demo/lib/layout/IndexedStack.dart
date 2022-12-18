@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:widget_demo/wrap_widget.dart';
 
@@ -58,13 +57,16 @@ class _IndexedStackWidgetState extends State<_IndexedStackWidget> {
           onPressed: () {
             setState(() {
               var rand = Random().nextInt(5);
-              while(rand == index) {
+              while (rand == index) {
                 rand = Random().nextInt(5);
               }
               index = rand;
             });
           },
-          child: Text('click me', style: TextStyle(color: Colors.white),),
+          child: Text(
+            'click me',
+            style: TextStyle(color: Colors.white),
+          ),
         ),
         IndexedStack(
           index: index,

@@ -47,7 +47,8 @@ class _BackdropFilterWidgetState extends State<_BackdropFilterWidget> {
                   filter: ImageFilter.blur(sigmaX: sigmaX, sigmaY: sigmaY),
                   child: Container(
                     color: Colors.black.withOpacity(0),
-                  )))
+                  )
+                  )),
         ],
       );
 

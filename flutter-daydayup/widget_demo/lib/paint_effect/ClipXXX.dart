@@ -1,6 +1,3 @@
-import 'dart:math';
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:widget_demo/wrap_widget.dart';
 
@@ -26,35 +23,59 @@ import 'package:widget_demo/wrap_widget.dart';
 
  */
 class ClipWidget extends WrapWidget {
-  ClipWidget()
-      : super(group: 'paint&effect', title: 'Clip - 剪裁组件');
+  ClipWidget() : super(group: 'paint&effect', title: 'Clip - 剪裁组件');
 
   Widget _clipRect() => ClipRect(
-    child: Align(
-      alignment: Alignment.topCenter,
-      heightFactor: 0.5,
-      child: Image.asset('assets/images/mine.png', width: 150, height: 150, fit: BoxFit.fill,),
-    ),
-  );
+        child: Align(
+          alignment: Alignment.topCenter,
+          heightFactor: 0.5,
+          child: Image.asset(
+            'assets/images/mine.png',
+            width: 150,
+            height: 150,
+            fit: BoxFit.fill,
+          ),
+        ),
+      );
 
   Widget _clipRRect() => ClipRRect(
-    borderRadius: BorderRadius.all(Radius.circular(20)),
-    child: Image.asset('assets/images/mine.png', width: 150, height: 150, fit: BoxFit.fill,),
-  );
+        borderRadius: BorderRadius.all(Radius.circular(20)),
+        child: Image.asset(
+          'assets/images/mine.png',
+          width: 150,
+          height: 150,
+          fit: BoxFit.fill,
+        ),
+      );
 
   Widget _clipOval() => ClipOval(
-    child: Image.asset('assets/images/mine.png', width: 150, height: 100, fit: BoxFit.fill,),
-  );
+        child: Image.asset(
+          'assets/images/mine.png',
+          width: 150,
+          height: 100,
+          fit: BoxFit.fill,
+        ),
+      );
 
   Widget _clipPath() => ClipPath(
-    clipper: _ClipPathClipper(),
-    child: Image.asset('assets/images/mine.png', width: 150, height: 100, fit: BoxFit.fill,),
-  );
+        clipper: _ClipPathClipper(),
+        child: Image.asset(
+          'assets/images/mine.png',
+          width: 150,
+          height: 100,
+          fit: BoxFit.fill,
+        ),
+      );
 
   Widget _clipPathShape() => ClipPath.shape(
-    shape: _ClipPathShape(),
-    child: Image.asset('assets/images/mine.png', width: 150, height: 100, fit: BoxFit.fill,),
-  );
+        shape: _ClipPathShape(),
+        child: Image.asset(
+          'assets/images/mine.png',
+          width: 150,
+          height: 100,
+          fit: BoxFit.fill,
+        ),
+      );
 
   @override
   Widget child(BuildContext context) {
@@ -62,23 +83,29 @@ class ClipWidget extends WrapWidget {
       children: <Widget>[
         Text('ClipRect'),
         _clipRect(),
-        SizedBox(height: 20,),
-
+        SizedBox(
+          height: 20,
+        ),
         Text('ClipRRect'),
         _clipRRect(),
-        SizedBox(height: 20,),
-
+        SizedBox(
+          height: 20,
+        ),
         Text('ClipOval'),
         _clipOval(),
-        SizedBox(height: 20,),
-
+        SizedBox(
+          height: 20,
+        ),
         Text('ClipPath'),
         _clipPath(),
-        SizedBox(height: 20,),
-
+        SizedBox(
+          height: 20,
+        ),
         Text('ClipPathShape'),
         _clipPathShape(),
-        SizedBox(height: 20,),
+        SizedBox(
+          height: 20,
+        ),
       ],
     );
   }
@@ -87,12 +114,14 @@ class ClipWidget extends WrapWidget {
 class _ClipPathClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
-    return Path()..moveTo(0, size.height/2)
-      ..quadraticBezierTo(size.width/4, 0, size.width/2, size.height/2)
-      ..quadraticBezierTo(size.width*3/4, size.height, size.width, size.height/2)
+    return Path()
+      ..moveTo(0, size.height / 2)
+      ..quadraticBezierTo(size.width / 4, 0, size.width / 2, size.height / 2)
+      ..quadraticBezierTo(
+          size.width * 3 / 4, size.height, size.width, size.height / 2)
       ..lineTo(size.width, size.height)
       ..lineTo(0, size.height)
-      ..lineTo(0, size.height/2);
+      ..lineTo(0, size.height / 2);
   }
 
   @override
@@ -105,21 +134,22 @@ class _ClipPathShape extends ShapeBorder {
   EdgeInsetsGeometry get dimensions => throw UnimplementedError();
 
   @override
-  Path getInnerPath(Rect rect, { TextDirection? textDirection }) {
+  Path getInnerPath(Rect rect, {TextDirection? textDirection}) {
     return Path();
   }
 
   @override
-  Path getOuterPath(Rect rect, { TextDirection? textDirection }) {
-    return Path()..moveTo(0, rect.height)
-      ..lineTo(rect.width/2, 0)
+  Path getOuterPath(Rect rect, {TextDirection? textDirection}) {
+    return Path()
+      ..moveTo(0, rect.height)
+      ..lineTo(rect.width / 2, 0)
       ..lineTo(rect.width, rect.height)
-      ..lineTo(rect.width/2, rect.height/2)
+      ..lineTo(rect.width / 2, rect.height / 2)
       ..lineTo(0, rect.height);
   }
 
   @override
-  void paint(Canvas canvas, Rect rect, { TextDirection? textDirection }) {
+  void paint(Canvas canvas, Rect rect, {TextDirection? textDirection}) {
     // TODO: implement paint
   }
 
@@ -127,5 +157,4 @@ class _ClipPathShape extends ShapeBorder {
   ShapeBorder scale(double t) {
     return Border();
   }
-
 }

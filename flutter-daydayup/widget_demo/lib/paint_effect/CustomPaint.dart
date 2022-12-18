@@ -1,5 +1,4 @@
 import 'dart:math';
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:widget_demo/wrap_widget.dart';
@@ -26,8 +25,7 @@ ClipRect(
 
  */
 class CustomPaintWidget extends WrapWidget {
-  CustomPaintWidget()
-      : super(group: 'paint&effect', title: 'CustomPaint - 自绘');
+  CustomPaintWidget() : super(group: 'paint&effect', title: 'CustomPaint - 自绘');
 
   @override
   Widget child(BuildContext context) {
@@ -42,7 +40,10 @@ class CustomPaintWidget extends WrapWidget {
               alignment: Alignment.centerLeft,
               child: Padding(
                 padding: EdgeInsets.only(left: 20),
-                child: Text('测试', style: TextStyle(color: Colors.white, fontSize: 20),),
+                child: Text(
+                  '测试',
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                ),
               ),
             ),
           ),
@@ -51,7 +52,6 @@ class CustomPaintWidget extends WrapWidget {
     );
   }
 }
-
 
 class _MyTickerPainter extends CustomPainter {
   @override

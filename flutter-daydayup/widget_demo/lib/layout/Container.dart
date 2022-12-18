@@ -1,6 +1,3 @@
-import 'dart:math';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:widget_demo/wrap_widget.dart';
 
@@ -30,17 +27,12 @@ class ContainerWidget extends WrapWidget {
           decoration: BoxDecoration(
               color: Colors.orangeAccent,
               gradient: LinearGradient(
-                  colors: <Color>[Colors.blueAccent, Colors.red]
-              ),
+                  colors: <Color>[Colors.blueAccent, Colors.red]),
               borderRadius: BorderRadius.all(Radius.circular(5.0)),
               border: Border.all(),
               boxShadow: <BoxShadow>[
-                BoxShadow(
-                    offset: Offset(5, 5),
-                    blurRadius: 8
-                )
-              ]
-          ),
+                BoxShadow(offset: Offset(5, 5), blurRadius: 8)
+              ]),
         ),
       ),
     );

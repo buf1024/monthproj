@@ -1,6 +1,3 @@
-
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:widget_demo/wrap_widget.dart';
 
@@ -23,14 +20,14 @@ class FloatingActionButtonWidget extends WrapWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text(title),
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {},
-          child: Icon(Icons.navigation),
-          backgroundColor: Colors.orangeAccent,
-        ),);
+      appBar: AppBar(
+        title: Text(title),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(Icons.navigation),
+        backgroundColor: Colors.orangeAccent,
+      ),
+    );
   }
 }
-

@@ -21,12 +21,14 @@ class CenterWidget extends WrapWidget {
       height: 200,
       color: Colors.purple,
       child: Center(
-        child: Image.asset(
-          'assets/images/mine.png',
-          width: 100,
-          height: 100,
-          fit: BoxFit.fill,
-        ),
+        child: ClipRRect(
+            child: Image.asset(
+              'assets/images/mine.png',
+              width: 100,
+              height: 100,
+              fit: BoxFit.fill,
+            ),
+            borderRadius: BorderRadius.circular(10.0)),
       ),
     );
   }

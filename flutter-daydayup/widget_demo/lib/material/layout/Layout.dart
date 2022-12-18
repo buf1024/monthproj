@@ -1,7 +1,3 @@
-import 'dart:math';
-import 'dart:ui';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:widget_demo/wrap_widget.dart';
 
@@ -23,21 +19,16 @@ class LayoutWidget extends WrapWidget {
           color: Colors.purple,
         ),
         Divider(),
-        Stepper(
-          currentStep: 1,
-            steps: <Step>[
-              Step(
-                title: Text('This is a title1'),
-                subtitle: Text('this is a子标题'),
-                content: Text('内容')
-              ),
-              Step(
-                  title: Text('This is a title2'),
-                  subtitle: Text('this is a子标题'),
-                  content: Text('内容2')
-              ),
-            ]
-        )
+        Stepper(currentStep: 1, steps: <Step>[
+          Step(
+              title: Text('This is a title1'),
+              subtitle: Text('this is a子标题'),
+              content: Text('内容')),
+          Step(
+              title: Text('This is a title2'),
+              subtitle: Text('this is a子标题'),
+              content: Text('内容2')),
+        ])
       ],
     );
   }

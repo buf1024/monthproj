@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:widget_demo/wrap_widget.dart';
 
@@ -36,16 +35,18 @@ class DialogAlertsPanelsWidget extends WrapWidget {
             title: Text('AlertDialog - 标题'),
             content: Text('内容 - AlertDialog'),
             actions: <Widget>[
-              FlatButton(
+              TextButton(
                 onPressed: () => Navigator.pop(context),
-                color: Colors.orangeAccent,
-                textColor: Colors.white,
+                style: TextButton.styleFrom(
+                    textStyle: TextStyle(color: Colors.white),
+                    foregroundColor: Colors.orangeAccent),
                 child: Text('取消'),
               ),
-              FlatButton(
+              TextButton(
                 onPressed: () => Navigator.pop(context),
-                color: Colors.orangeAccent,
-                textColor: Colors.white,
+                style: TextButton.styleFrom(
+                    textStyle: TextStyle(color: Colors.white),
+                    foregroundColor: Colors.orangeAccent),
                 child: Text('确定'),
               ),
             ],
@@ -217,7 +218,7 @@ class DialogAlertsPanelsWidget extends WrapWidget {
   }
 
   void _snackBart(BuildContext context) {
-    Scaffold.of(context).showSnackBar(SnackBar(
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Text('撤销吗?'),
       action: SnackBarAction(
         label: '撤销',
@@ -230,39 +231,44 @@ class DialogAlertsPanelsWidget extends WrapWidget {
   Widget child(BuildContext context) {
     return Column(
       children: <Widget>[
-        FlatButton(
-          color: Colors.orangeAccent,
-          textColor: Colors.white,
+        TextButton(
+          style: TextButton.styleFrom(
+              textStyle: TextStyle(color: Colors.white),
+              foregroundColor: Colors.orangeAccent),
           onPressed: () => _alertDialog(context),
           child: Text('显示AlertDialog'),
         ),
-        FlatButton(
-          color: Colors.purple,
-          textColor: Colors.white,
+        TextButton(
+          style: TextButton.styleFrom(
+              textStyle: TextStyle(color: Colors.white),
+              foregroundColor: Colors.purple),
           onPressed: () => _simpleDialog(context),
           child: Text('显示自定义SimpleDialog'),
         ),
-        FlatButton(
-          color: Colors.brown,
-          textColor: Colors.white,
+        TextButton(
+          style: TextButton.styleFrom(
+              textStyle: TextStyle(color: Colors.white),
+              foregroundColor: Colors.brown),
           onPressed: () => _dialog(context),
           child: Text('显示自定义Dialog'),
         ),
         Divider(),
         Builder(
           builder: (BuildContext context) {
-            return FlatButton(
-              color: Colors.redAccent,
-              textColor: Colors.white,
+            return TextButton(
+              style: TextButton.styleFrom(
+                  textStyle: TextStyle(color: Colors.white),
+                  foregroundColor: Colors.redAccent),
               onPressed: () => _bottomSheet(context),
               child: Text('显示BottomSheeet'),
             );
           },
         ),
         Builder(builder: (BuildContext context) {
-          return FlatButton(
-            color: Colors.cyan,
-            textColor: Colors.white,
+          return TextButton(
+            style: TextButton.styleFrom(
+                textStyle: TextStyle(color: Colors.white),
+                foregroundColor: Colors.cyan),
             onPressed: () => _snackBart(context),
             child: Text('显示SnackBart'),
           );

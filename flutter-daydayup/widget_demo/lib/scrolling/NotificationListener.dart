@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:widget_demo/wrap_widget.dart';
 
@@ -27,15 +25,16 @@ class NotificationListenerWidget extends WrapWidget {
 class _NotificationListenerWidget extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _NotificationListenerWidgetState();
-
 }
 
-class _NotificationListenerWidgetState extends State<_NotificationListenerWidget> {
+class _NotificationListenerWidgetState
+    extends State<_NotificationListenerWidget> {
   double progress = 0.0;
   @override
   void initState() {
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     MediaQueryData mediaQueryData = MediaQuery.of(context);
@@ -76,12 +75,14 @@ class _NotificationListenerWidgetState extends State<_NotificationListenerWidget
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                       shape: BoxShape.circle, color: Colors.purple),
-                  child: Text('${progress.toStringAsFixed(2)}%', style: TextStyle(color: Colors.white),),
+                  child: Text(
+                    '${progress.toStringAsFixed(2)}%',
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ),
               ),
             )
           ],
         ));
   }
-
 }

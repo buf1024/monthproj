@@ -1,6 +1,3 @@
-import 'dart:math';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:widget_demo/wrap_widget.dart';
 
@@ -256,10 +253,7 @@ class _InformationDisplaysWidgetState
   }
 
   Widget _dataTableWidget(BuildContext context) {
-    var width = MediaQuery
-        .of(context)
-        .size
-        .width;
+    var width = MediaQuery.of(context).size.width;
     return Card(
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(10))),
@@ -279,72 +273,62 @@ class _InformationDisplaysWidgetState
                 DataColumn(label: Text('排名')),
               ],
               rows: <DataRow>[
-                DataRow(
-                    cells: <DataCell>[
-                      DataCell(Text('1')),
-                      DataCell(Text('以地方')),
-                      DataCell(Text('50')),
-                      DataCell(Text('50')),
-                      DataCell(Text('1')),
-                      DataCell(Text('以地方')),
-                      DataCell(Text('50')),
-                      DataCell(Text('50')),
-                    ]
-                ),
-                DataRow(
-                    cells: <DataCell>[
-                      DataCell(Text('1')),
-                      DataCell(Text('以地方')),
-                      DataCell(Text('50')),
-                      DataCell(Text('50')),
-                      DataCell(Text('1')),
-                      DataCell(Text('以地方')),
-                      DataCell(Text('50')),
-                      DataCell(Text('50')),
-                    ]
-                ),
-                DataRow(
-                    cells: <DataCell>[
-                      DataCell(Text('1')),
-                      DataCell(Text('以地方')),
-                      DataCell(Text('50')),
-                      DataCell(Text('50')),
-                      DataCell(Text('1')),
-                      DataCell(Text('以地方')),
-                      DataCell(Text('50')),
-                      DataCell(Text('50')),
-                    ]
-                ),
-                DataRow(
-                    cells: <DataCell>[
-                      DataCell(Text('1')),
-                      DataCell(Text('以地方')),
-                      DataCell(Text('50')),
-                      DataCell(Text('50')),
-                      DataCell(Text('1')),
-                      DataCell(Text('以地方')),
-                      DataCell(Text('50')),
-                      DataCell(Text('50')),
-                    ]
-                ),
-                DataRow(
-                    cells: <DataCell>[
-                      DataCell(Text('1')),
-                      DataCell(Text('以地方')),
-                      DataCell(Text('50')),
-                      DataCell(Text('50')),
-                      DataCell(Text('1')),
-                      DataCell(Text('以地方')),
-                      DataCell(Text('50')),
-                      DataCell(Text('50')),
-                    ]
-                ),
+                DataRow(cells: <DataCell>[
+                  DataCell(Text('1')),
+                  DataCell(Text('以地方')),
+                  DataCell(Text('50')),
+                  DataCell(Text('50')),
+                  DataCell(Text('1')),
+                  DataCell(Text('以地方')),
+                  DataCell(Text('50')),
+                  DataCell(Text('50')),
+                ]),
+                DataRow(cells: <DataCell>[
+                  DataCell(Text('1')),
+                  DataCell(Text('以地方')),
+                  DataCell(Text('50')),
+                  DataCell(Text('50')),
+                  DataCell(Text('1')),
+                  DataCell(Text('以地方')),
+                  DataCell(Text('50')),
+                  DataCell(Text('50')),
+                ]),
+                DataRow(cells: <DataCell>[
+                  DataCell(Text('1')),
+                  DataCell(Text('以地方')),
+                  DataCell(Text('50')),
+                  DataCell(Text('50')),
+                  DataCell(Text('1')),
+                  DataCell(Text('以地方')),
+                  DataCell(Text('50')),
+                  DataCell(Text('50')),
+                ]),
+                DataRow(cells: <DataCell>[
+                  DataCell(Text('1')),
+                  DataCell(Text('以地方')),
+                  DataCell(Text('50')),
+                  DataCell(Text('50')),
+                  DataCell(Text('1')),
+                  DataCell(Text('以地方')),
+                  DataCell(Text('50')),
+                  DataCell(Text('50')),
+                ]),
+                DataRow(cells: <DataCell>[
+                  DataCell(Text('1')),
+                  DataCell(Text('以地方')),
+                  DataCell(Text('50')),
+                  DataCell(Text('50')),
+                  DataCell(Text('1')),
+                  DataCell(Text('以地方')),
+                  DataCell(Text('50')),
+                  DataCell(Text('50')),
+                ]),
               ],
             ),
           ),
-        )
-    );
+        ));
   }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(

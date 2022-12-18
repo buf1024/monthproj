@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:widget_demo/wrap_widget.dart';
 
@@ -15,7 +14,8 @@ import 'package:widget_demo/wrap_widget.dart';
 
  */
 class ConstrainedBoxWidget extends WrapWidget {
-  ConstrainedBoxWidget() : super(group: 'layout -- 布局组件', title: 'ConstrainedBox - 限制组件');
+  ConstrainedBoxWidget()
+      : super(group: 'layout -- 布局组件', title: 'ConstrainedBox - 限制组件');
 
   @override
   Widget child(BuildContext context) {
@@ -35,7 +35,6 @@ class ConstrainedBoxWidget extends WrapWidget {
           ),
         ),
       ),
-
     );
   }
 }

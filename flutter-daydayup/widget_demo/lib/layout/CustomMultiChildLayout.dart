@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:widget_demo/wrap_widget.dart';
 
 /*  CustomMultiChildLayout
@@ -14,14 +13,11 @@ positionChild确定位置。
  关联组件: CustomSingleChildLayout, Stack, Flow
  */
 
-enum MyId{
-  ID_1,
-  ID_2,
-  ID_3
-}
+enum MyId { ID_1, ID_2, ID_3 }
 
 class CustomMultiChildLayoutWidget extends WrapWidget {
-  CustomMultiChildLayoutWidget() : super(group: 'layout -- 布局组件', title: 'CustomMultiChildLayout - 自由布局');
+  CustomMultiChildLayoutWidget()
+      : super(group: 'layout -- 布局组件', title: 'CustomMultiChildLayout - 自由布局');
 
   @override
   Widget child(BuildContext context) {
@@ -39,7 +35,7 @@ class CustomMultiChildLayoutWidget extends WrapWidget {
               height: 50,
               width: 50,
               decoration:
-              BoxDecoration(color: Colors.orange, shape: BoxShape.circle),
+                  BoxDecoration(color: Colors.orange, shape: BoxShape.circle),
             ),
           ),
           LayoutId(
@@ -47,17 +43,17 @@ class CustomMultiChildLayoutWidget extends WrapWidget {
               child: Container(
                 height: 50,
                 width: 50,
-                decoration: BoxDecoration(color: Colors.blue, shape: BoxShape.circle),
-              )
-          ),
+                decoration:
+                    BoxDecoration(color: Colors.blue, shape: BoxShape.circle),
+              )),
           LayoutId(
               id: MyId.ID_3,
               child: Container(
                 height: 50,
                 width: 50,
-                decoration: BoxDecoration(color: Colors.amber, shape: BoxShape.circle),
-              )
-          ),
+                decoration:
+                    BoxDecoration(color: Colors.amber, shape: BoxShape.circle),
+              )),
         ],
       ),
     );
@@ -75,10 +71,12 @@ class _MultiChildLayoutDelegate extends MultiChildLayoutDelegate {
     positionChild(MyId.ID_2, Offset(0, size.height - sizeChild.height));
 
     sizeChild = layoutChild(MyId.ID_3, BoxConstraints.loose(size));
-    positionChild(MyId.ID_3, Offset(size.width / 2 - sizeChild.width/2, size.height/2 - sizeChild.height/2));
+    positionChild(
+        MyId.ID_3,
+        Offset(size.width / 2 - sizeChild.width / 2,
+            size.height / 2 - sizeChild.height / 2));
   }
 
   @override
   bool shouldRelayout(MultiChildLayoutDelegate oldDelegate) => false;
-
 }

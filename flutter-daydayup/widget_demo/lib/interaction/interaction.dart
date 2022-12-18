@@ -168,7 +168,7 @@ class _InteractionWidgetState extends State<_InteractionWidget> {
             ),
           ),
           onTap: () {
-            Scaffold.of(context).showSnackBar(SnackBar(
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
               content: Text('AbsorbPointer 本身会响应事件'),
               duration: Duration(milliseconds: 500),
             ));
@@ -206,7 +206,7 @@ class _InteractionWidgetState extends State<_InteractionWidget> {
             ),
           ),
           onTap: () {
-            Scaffold.of(context).showSnackBar(SnackBar(
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
               content: Text('IgnorePointer 本身不响应事件'),
             ));
           },
