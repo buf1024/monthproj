@@ -8,7 +8,7 @@
 
 - 模仿电影《你的名字。》日记应用: [hellodiary](https://github.com/buf1024/monthproj/tree/master/hellodiary) -- flutter。apk下载:[hellodiary.apk](https://github.com/buf1024/monthproj/raw/master/hellodiary/release/hellodiary.apk)
 
-- 为理解微服务的测试 -- 选[go-micro](https://github.com/micro/go-micro)为例: [stock](https://github.com/buf1024/monthproj/tree/master/ms-exam/stock) -- 模拟的测试代码, 需一定配置方可运行
+- 为理解微服务的测试 -- 选[go-micro](https://github.com/micro/go-micro)为例: [stock](https://github.com/buf1024/monthproj/tree/master/ms-exam/stock) -- 模拟的测试代码, 需一定配置方可运行，需要懂得docker以及docker compose的一丢丢常识
 
 - Flutter组件示例(为了避免忘却): [flutter-daydayup](https://github.com/buf1024/monthproj/tree/master/flutter-daydayup) -- flutter升级可能导致不可运行，所以不上传android/ios目录，在工程目录执行`flutter create .`生成相关文件
 
