@@ -1,0 +1,7 @@
+[book]
+authors = ["luoguochun"]
+language = "en"
+multilingual = false
+src = "src"
+title = "rustlib-note"
+

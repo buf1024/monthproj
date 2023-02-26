@@ -56,3 +56,5 @@ yarn.lock
 .gradle/
 *.lock
 .flutter-plugins-dependencies
+frontend-pkg-note/book
+rustlib-note/book

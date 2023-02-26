@@ -68,7 +68,10 @@ class _AlignWidgetState extends State<_AlignWidget> {
         ),
         Row(
           children: <Widget>[
-            Text('y(-1~1):'),
+            RotatedBox(
+              quarterTurns: 3,
+              child: Text('y(-1~1):'),
+            ),
             RotatedBox(
               quarterTurns: 1,
               child: Slider(
