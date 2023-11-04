@@ -1,0 +1,347 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>nom -- 乐高式的解析器 👏 - rustlib-note</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">简介</a></li><li class="chapter-item expanded affix "><li class="part-title">文本处理</li><li class="chapter-item expanded "><a href="nom.html" class="active"><strong aria-hidden="true">1.</strong> nom -- 乐高式的解析器 👏</a></li><li class="chapter-item expanded affix "><li class="part-title">其他</li><li class="chapter-item expanded "><a href="lazy_static.html"><strong aria-hidden="true">2.</strong> lazy_static -- 全局静态变量初化</a></li><li class="chapter-item expanded "><a href="config-rs.html"><strong aria-hidden="true">3.</strong> config-rs -- 读取配置文件</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">rustlib-note</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="简介"><a class="header" href="#简介">简介</a></h2>
+<p>写过parser的人，不管是简单的自定义协议，或者复杂的协议，一般都是采用自上往下的解释方式，从第1个字节，一路开黑，到最后字节。遇到<code>;</code>用一个判断，遇到<code>:</code>用一个<code>match</code>等等，<code>switch</code>相应的<code>case</code>，所谓遇神拜神，遇鬼杀鬼，遇佛却不知所措。这样的问题是，加上错误处理，<code>if else</code>可能会过于复杂而凌乱，时间久了，难以维护。稍微高端点的，可能会写出几个复杂一点的正则表达式，不过最后也很有可能，最终忘记当初写这正则的含义。高端玩家估计就用<code>lex/yacc flex/bison</code>，的确好用又好维护，除了增加一下描述文件，增加一些与开发语言无关的东西。不过杀鸡焉用牛刀，这么庞大的工具，有必要割本来就小的小JJ？！</p>
+<p><a href="https://github.com/Geal/nom">nom</a>提供一种比较清奇的思路，估计作者深受乐高的熏陶，才有这种创造。我们知道，乐高玩具，提供的是很限的几个基础形状模块，通过一个个模块的组合起来，就可以实现各种物件的创作，栩栩如生。<a href="https://github.com/Geal/nom">nom</a>的思路并不是教你如何像<code>lex/yacc</code>构造特定语法的模板文件，也不期待你自顶而下解释，而是像乐高一样，提供很多基础的基础形状，如<code>tag, take_while1, is_a</code>等，并提供组合一起的方法，如<code>alt, tupple, preceded</code>等。用各种方法可以组合，形成各式各样的parser，而又不损失任何性能。</p>
+<p><a href="https://github.com/Geal/nom">nom</a>函数的设计高度一致，几乎所有函数的调用，都返回带相同签名的函数:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// 一般函数返回
+impl Fn(Input) -&gt; IResult&lt;Input, Output, Error&gt;
+
+// IResult定义
+pub type IResult&lt;I, O, E = error::Error&lt;I&gt;&gt; = Result&lt;(I, O), Err&lt;E&gt;&gt;;
+
+// ParseError&lt;I&gt; 为 () 实现了，所以一般可以用()，方便使用ParseError
+impl&lt;I&gt; ParseError&lt;I&gt; for ()
+<span class="boring">}
+</span></code></pre></pre>
+<p><a href="https://github.com/Geal/nom">nom</a>的基础函数构造块，分两个版本，一个是<code>complete</code>和<code>stream</code>版本，两个直观上最大的区别是报错方式，<code>stream</code>版本报错为<code>Err::Incomplete(n)</code>，<code>complete</code>直接报<code>Err::Error/Err::Failure</code>。除此之后，使用上并没有明显的差异。</p>
+<p><a href="https://github.com/Geal/nom">nom</a>的parser和combinator应有尽有，没有的也可以组合出来。除了<a href="https://docs.rs">docs.rs</a>的文档，作者还贴心的列出来(因为rust生成的文档不方便一起看)，这里不累赘，参考作者介绍<a href="https://github.com/Geal/nom/blob/master/doc/choosing_a_combinator.md">choosing_a_combinator</a>。</p>
+<h2 id="示例"><a class="header" href="#示例">示例</a></h2>
+<p><a href="https://tokio.rs">tokio</a>的官方教程<a href="https://tokio.rs/tokio/tutorial">tutorial</a>是学习rust很好的一个开始的地方，把之前<code>C/C++</code>已有的概念用rust实现了一遍，既亲切又熟悉。<a href="https://tokio.rs">tokio</a>的官方教程<a href="https://tokio.rs/tokio/tutorial">tutorial</a>是实现简单redis功能，代码仓库位于: <a href="https://github.com/tokio-rs/mini-redis">mini-redis</a>。 <a href="https://github.com/tokio-rs/mini-redis">mini-redis</a>对于redis协议的解析是通过一个字节解析的，幸好简单，所以原实现并不凌乱。现修改为用<a href="https://github.com/Geal/nom">nom</a>解析方式，代码仓库位于: <a href="https://github.com/buf1024/buf1024.github.io/tree/master/.demo/rust-lib/mini-redis">https://github.com/buf1024/buf1024.github.io/tree/master/.demo/rust-lib/mini-redis</a>，协议解析的文件：<a href="https://github.com/buf1024/blog-demo/blob/master/rust-lib/mini-redis/src/frame.rs">frame.rs</a></p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>/// A frame in the Redis protocol.
+/// 协议格式
+#[derive(Clone, Debug)]
+pub enum Frame {
+    // +xxx\r\n 简单的string
+    Simple(String),
+    // -xxx\r\n 错误的string
+    Error(String),
+    // :ddd\r\n u64数值
+    Integer(u64),
+    // $dd\r\nbbbbb\r\n 有内容的chunk
+    Bulk(Bytes),
+    // $-1\r\n 空Chunk
+    Null,
+    // *dd\r\nxxx\r\n array dd 我数量
+    Array(Vec&lt;Frame&gt;),
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>mini-redis简单实现了redis的5个基本协议，实现并不复杂，拼拼凑凑就成了，魔改的<a href="https://github.com/Geal/nom">nom</a>的版本如下:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn parse_simple(src: &amp;str) -&gt; IResult&lt;&amp;str, (Frame, usize)&gt;
+    {
+        let (input, output) = delimited(tag(&quot;+&quot;), take_until1(&quot;\r\n&quot;), tag(&quot;\r\n&quot;))(src)?;
+        Ok((input, (Frame::Simple(String::from(output)), src.len() - input.len())))
+    }
+
+    fn parse_error(src: &amp;str) -&gt; IResult&lt;&amp;str, (Frame, usize)&gt;
+    {
+        let (input, output) = delimited(tag(&quot;-&quot;), take_until1(&quot;\r\n&quot;), tag(&quot;\r\n&quot;))(src)?;
+        Ok((input, (Frame::Error(String::from(output)), src.len() - input.len())))
+    }
+
+    fn parse_decimal(src: &amp;str) -&gt; IResult&lt;&amp;str, (Frame, usize)&gt;
+    {
+        let (input, output) = map_res(
+            delimited(tag(&quot;:&quot;), take_until1(&quot;\r\n&quot;), tag(&quot;\r\n&quot;)),
+            |s: &amp;str| u64::from_str_radix(s, 10),
+        )(src)?;
+        Ok((input, (Frame::Integer(output), src.len() - input.len())))
+    }
+
+    fn parse_bulk(src: &amp;str) -&gt; IResult&lt;&amp;str, (Frame, usize)&gt;
+    {
+        let (input, output) = alt((
+            map(tag(&quot;$-1\r\n&quot;), |_| Frame::Null),
+            map(terminated(length_value(
+                map_res(
+                    delimited(tag(&quot;$&quot;), take_until1(&quot;\r\n&quot;), tag(&quot;\r\n&quot;)),
+                    |s: &amp;str| u64::from_str_radix(s, 10)),
+                rest),
+                           tag(&quot;\r\n&quot;),
+            ), |out| {
+                let data = Bytes::copy_from_slice(out.as_bytes());
+                Frame::Bulk(data)
+            }))
+        )(src)?;
+        Ok((input, (output, src.len() - input.len())))
+    }
+
+    fn parse_array(src: &amp;str) -&gt; IResult&lt;&amp;str, (Frame, usize)&gt;
+    {
+        let (input, output) =
+            map(length_count(
+                map_res(
+                    delimited(tag(&quot;*&quot;), take_until1(&quot;\r\n&quot;), tag(&quot;\r\n&quot;)),
+                    |s: &amp;str| {
+                        println!(&quot;{}&quot;, s);
+                        u64::from_str_radix(s, 10)
+                    }),
+                Frame::parse,
+            ), |out| {
+                let data = out.iter().map(|item| item.0.clone()).collect();
+                Frame::Array(data)
+            },
+            )(src)?;
+        Ok((input, (output, src.len() - input.len())))
+    }
+
+    pub fn parse(src: &amp;str) -&gt; IResult&lt;&amp;str, (Frame, usize)&gt;
+    {
+        alt((Frame::parse_simple, Frame::parse_error, Frame::parse_decimal, Frame::parse_bulk, Frame::parse_array))(src)
+    }
+<span class="boring">}
+</span></code></pre></pre>
+<p>可以看到<a href="https://github.com/Geal/nom">nom</a>的版本有很简洁的方式，甚至一行代码即可实现，不需要原代码那样，一个字节一个字节的判断，来操控和移动内存位置。就类似乐高积木一样，一个一个的叠起来，简单又简洁。</p>
+<p>测试：</p>
+<pre><code class="language-shell">^_^@~/rust-lib/mini-redis]$ RUST_LOG=debug cargo run --bin mini-redis-server
+   Compiling mini-redis v0.4.0 (~/rust-lib/mini-redis)
+    Finished dev [unoptimized + debuginfo] target(s) in 7.44s
+     Running `target/debug/mini-redis-server`
+Sep 13 00:10:16.517  INFO mini_redis::server: accepting inbound connections
+Sep 13 00:10:40.261 DEBUG mini_redis::server: accept address from 127.0.0.1:55931
+5
+Sep 13 00:10:40.264 DEBUG run: mini_redis::connection: nom frame: Array([Bulk(b&quot;set&quot;), Bulk(b&quot;hello&quot;), Bulk(b&quot;world&quot;), Bulk(b&quot;px&quot;), Integer(3600)]), n: 50
+Sep 13 00:10:40.264 DEBUG run: mini_redis::server: cmd=Set(Set { key: &quot;hello&quot;, value: b&quot;world&quot;, expire: Some(3.6s) })
+Sep 13 00:10:40.264 DEBUG run:apply: mini_redis::cmd::set: response=Simple(&quot;OK&quot;)
+^CSep 13 00:10:52.278 DEBUG my_exit: mini_redis_server: press once more to exit
+^CSep 13 00:10:52.934 DEBUG my_exit: mini_redis_server: now exit
+Sep 13 00:10:52.934  INFO mini_redis::server: shutting down
+
+^_^@~/rust-lib/mini-redis]$ RUST_LOG=debug cargo run --bin mini-redis-cli set hello world 3600 
+   Compiling mini-redis v0.4.0 (~/rust-lib/mini-redis)
+    Finished dev [unoptimized + debuginfo] target(s) in 1.61s
+     Running `target/debug/mini-redis-cli set hello world 3600`
+Sep 13 00:10:40.262 DEBUG set_expires{key=&quot;hello&quot; value=b&quot;world&quot; expiration=3.6s}: mini_redis::client: request=Array([Bulk(b&quot;set&quot;), Bulk(b&quot;hello&quot;), Bulk(b&quot;world&quot;), Bulk(b&quot;px&quot;), Integer(3600)])
+Sep 13 00:10:40.265 DEBUG set_expires{key=&quot;hello&quot; value=b&quot;world&quot; expiration=3.6s}: mini_redis::connection: nom frame: Simple(&quot;OK&quot;), n: 5
+Sep 13 00:10:40.265 DEBUG set_expires{key=&quot;hello&quot; value=b&quot;world&quot; expiration=3.6s}: mini_redis::client: response=Some(Simple(&quot;OK&quot;))
+OK
+
+</code></pre>
+<h2 id="小结"><a class="header" href="#小结">小结</a></h2>
+<p>rust的<a href="https://github.com/Geal/nom">nom</a>提供一种类似于乐高积木的方式去构造解析器，通过组合各种基本的parser，完全可以构造出足够复杂的解析器，同时不会因为组合各种parser，而失去任何性能。同时，得益于其命名方式和统一的函数返回形式，基于<a href="https://github.com/Geal/nom">nom</a>的解析器，语义上比那些<code>get_line</code>之类的，清晰太多。所以在解析任务上，除了有现成而又成熟的解析库，完全可以考虑采用的，而非<code>get_line，get_u8</code>那样一个字节的或者正则那样一个模式的，开黑下去……</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="lazy_static.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="lazy_static.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>

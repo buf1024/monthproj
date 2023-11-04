@@ -58,3 +58,4 @@ yarn.lock
 .flutter-plugins-dependencies
 frontend-pkg-note/book
 rustlib-note/book
+flutter-lib-note/book

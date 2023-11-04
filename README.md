@@ -14,4 +14,4 @@
 
 - 前端一些常用或不常用库示例(当然介绍是粗略和不完整甚至是过期的): [frontend-pkg-note](https://github.com/buf1024/monthproj/tree/master/frontend-pkg-note) 
 
-- Rust一些常用或不常用库示例(当然介绍是粗略和不完整甚至是过期的): [rustlib-note](https://github.com/buf1024/monthproj/tree/master/rustlib-note) 
+- Rust一些常用或不常用库示例(当然介绍是粗略和不完整甚至是过期的): [rust-pkg-note](https://github.com/buf1024/monthproj/tree/master/rust-pkg-note) 

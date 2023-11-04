@@ -3,5 +3,4 @@ authors = ["luoguochun"]
 language = "en"
 multilingual = false
 src = "src"
-title = "frontend-pkg-note"
-
+title = "flutter commmon lib simple demo"
